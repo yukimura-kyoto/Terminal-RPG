@@ -1,5 +1,6 @@
 package Player_NPC;
 
+import Inventory.W_Stats;
 import Inventory.Weapons;
 
 public class Player {
@@ -13,10 +14,17 @@ public class Player {
     public int level;
     public double xp;
 
-    public Weapons currentWeapon;
+    public String P_name;
+    public W_Stats currentWeapon; // <--- aqui é a arma equipada
 
-    public void equipWeapon(Weapons equipped) {
-        this.currentWeapon = equipped;
+    public Player(String nome) {
+        this.P_name = nome;
+        this.currentWeapon = null; // começa sem arma
+    }
+
+    // Method pra equipar a arma
+    public void equipWeapon(W_Stats equipped) {
+        this.currentWeapon = equipped; // apenas define
     }
 
 

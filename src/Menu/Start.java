@@ -1,8 +1,5 @@
 package Menu;
-
-
 import Player_NPC.Player;
-
 import java.util.Scanner;
 
 public class Start {
@@ -30,14 +27,20 @@ public class Start {
         System.out.println("Vida: " + player.health);
         System.out.println("Stamina: " + player.stamina);
         System.out.println("Armadura: " + player.armadura);
+        System.out.println("Arma equipada: " + player.currentWeapon.name);
 
         System.out.println("===================================\n");
     }
 
-
-    // mensagem de ataque
-    public static void printAtaque(String atacante, int dano, String alvo) {
-        System.out.println(atacante + " causou " + dano + " de dano em " + alvo + "!");
+    public static void printAtaquePlayer(Player player){
+        System.out.println("┌─────────────────────────────┐");
+        System.out.println("│ ⚔️  " + player.name + " atacou com " + player.currentWeapon);
+        System.out.println("│                             │");
+        if (crit) {
+            System.out.println("│ ✨ CRÍTICO! ✨");
+        }
+        System.out.println("│ 💥 Dano causado: " + player.currentWeapon);
+        System.out.println("└─────────────────────────────┘");
     }
 
 }

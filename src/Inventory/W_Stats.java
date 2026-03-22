@@ -22,4 +22,13 @@ public class W_Stats {
         this.critMult = critMult;
     }
 
+    public int calcularDano() {
+        int dano = danoMin + (int)(Math.random() * (danoMax - danoMin + 1));
+        if (Math.random() < critChance) {
+            dano *= 2;
+            System.out.println("CRÍTICO!");
+        }
+        return dano;
+    }
+
 }
