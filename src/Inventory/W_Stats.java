@@ -1,19 +1,25 @@
 package Inventory;
 
-public class Weapon_Stats {
+public class W_Stats {
 
-    public String nome;
+    // Parte totalmente ignoravel, isso define os Status das armas
+    // a menos que queira adicionar um novo tipo de Status
+    // se quiser se vira para arrumar tudo
+
+    public String name;
     public int danoMin;
     public int danoMax;
     public String tipoDano;
     public double critChance; // 0.1 = 10%
+    public double critMult;
 
-    public Weapon_Stats(String nome, int danoMin, int danoMax, String tipoDano, double critChance) {
-        this.nome = nome;
+    public W_Stats(String name, int danoMin, int danoMax, String tipoDano, double critChance, double critMult) {
+        this.name = name;
         this.danoMin = danoMin;
         this.danoMax = danoMax;
         this.tipoDano = tipoDano;
         this.critChance = critChance;
+        this.critMult = critMult;
     }
 
 }

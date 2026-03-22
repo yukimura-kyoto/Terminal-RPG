@@ -1,23 +1,34 @@
 package Player_NPC;
 
+import Inventory.Weapons;
+
 public class Player {
-    // Stats comuns, iguais ao NPC
-    public String nome;
+
+    // nome, vida, stamina, armadura, esquiva
+    public String name;
     public int health;
     public int stamina;
-    public int armadura;
-
-    // Stats exclusivos do player
-    public int xp;
+    public int armadura; // se quiser incluir armadura
+    public int esquiva;
     public int level;
+    public double xp;
 
-    // Construtor
-    public Player(String nome, int health, int stamina, int armadura) {
-        this.nome = nome;
+    public Weapons currentWeapon;
+
+    public void equipWeapon(Weapons equipped) {
+        this.currentWeapon = equipped;
+    }
+
+
+
+    public Player(String name, int health, int stamina, int armadura, int esquiva, int level, double xp) {
+        this.name = name;
         this.health = health;
         this.stamina = stamina;
         this.armadura = armadura;
-        this.xp = 0;       // começa no 0
-        this.level = 1;    // começa no level 1
+        this.esquiva = esquiva;
+        this.level = level;
+        this.xp = xp;
+
     }
 }
