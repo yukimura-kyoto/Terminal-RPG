@@ -1,6 +1,8 @@
 import Inventory.Weapons;
 import Menu.Start;
 import Player_NPC.Player;
+import Menu.Events;
+import static Menu.Events.randomNPC;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,6 +24,10 @@ public class Main {
         // Print dos Status do Player
         Start.printStatus(Jogador);
 
+        while (Jogador.health > 0 ){
+            randomNPC();
+            Jogador.health--;
+        }
 
 
 

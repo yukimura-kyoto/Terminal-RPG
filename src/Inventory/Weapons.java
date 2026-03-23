@@ -5,6 +5,8 @@ public class Weapons {
     // W_Stats puxa os atributos
     // nome, danoMin, danoMax, tipo do Dano, Crit Chance, Crit Mult
 
+    W_Stats[] weapons = new W_Stats[3];
+
     public static  W_Stats Soco = new W_Stats
             ("Soco", 5,10,"Corpo",0.5,1.5);
 

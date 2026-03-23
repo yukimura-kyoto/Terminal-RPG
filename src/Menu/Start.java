@@ -17,6 +17,13 @@ public class Start {
         return nome; // retorna o nome digitado
     }
 
+    // Printa 50 linhas em branco so pra dar a sensacao que limpo
+    public static void Clear(){
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
+    }
+
     // Print dos Status
     public static void printStatus(Player player) {
         System.out.println("===================================");
@@ -33,13 +40,13 @@ public class Start {
     }
 
     public static void printAtaquePlayer(Player player){
+
+        int dano = Ataques.ataqueLeve(player); // precisa disso
+
         System.out.println("┌─────────────────────────────┐");
-        System.out.println("│ ⚔️  " + player.name + " atacou com " + player.currentWeapon);
+        System.out.println("│ ⚔️  " + player.name + " atacou com " + player.currentWeapon.name);
         System.out.println("│                             │");
-        if (crit) {
-            System.out.println("│ ✨ CRÍTICO! ✨");
-        }
-        System.out.println("│ 💥 Dano causado: " + player.currentWeapon);
+        System.out.println("│ 💥 Dano causado: " + dano);
         System.out.println("└─────────────────────────────┘");
     }
 

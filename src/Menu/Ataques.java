@@ -1,3 +1,5 @@
+package Menu;
+
 import Player_NPC.Player;
 import java.util.Random;
 
@@ -20,7 +22,6 @@ public abstract class Ataques {
             System.out.println("CRÍTICO!");
         }
 
-        IO.println("Voce deu "+dano);
         return dano;
     }
 

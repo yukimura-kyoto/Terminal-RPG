@@ -1,4 +1,5 @@
 package Player_NPC;
+import java.util.Random;
 
 public class NPC {
 
@@ -6,10 +7,14 @@ public class NPC {
 
     // Player_NPC.NPC
     // Player_NPC.stats = name, health, stamina, armor, dodge
-    public static Stats Jaspian = new Stats
-            ("Jaspian", 100, 50, 5,10);
-    public static Stats Raziel = new Stats
-            ("Jaspian", 250, 125, 15,15);
+    public static Stats[] npcs = {
+            new Stats("Jaspian", 100, 50, 5, 10),
+            new Stats("Raziel", 250, 125, 15, 15)
+    };
 
+    public static Random rd = new Random();
 
+    public static Stats getRandomNPC() {
+        return npcs[rd.nextInt(npcs.length)];
+    }
 }
