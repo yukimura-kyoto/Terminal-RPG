@@ -41,13 +41,27 @@ public class Start {
 
     public static void printAtaquePlayer(Player player){
 
-        int dano = Ataques.ataqueLeve(player); // precisa disso
+        int dano = Ataques.ataqueLeve(player);
 
         System.out.println("┌─────────────────────────────┐");
-        System.out.println("│ ⚔️  " + player.name + " atacou com " + player.currentWeapon.name);
+        System.out.println("│ ⚔️  " + player.name + " atacou com " + player.currentWeapon.name+"│");
         System.out.println("│                             │");
         System.out.println("│ 💥 Dano causado: " + dano);
         System.out.println("└─────────────────────────────┘");
     }
+
+    public static void decisaoPlayer(){
+        System.out.println("┌─────────────────────────────┐");
+        System.out.println("│     ⚔️  SUAS HABILIDADES    │");
+        System.out.println("├─────────────────────────────┤");
+        System.out.println("│ 1 - 🗡️  Ataque Leve         │");
+        System.out.println("│ 2 - ⚔️  Ataque Duplo        │");
+        System.out.println("│ 3 - 🛡️  Defender            │");
+        System.out.println("│ 4 - 🏃 Fugir                │");
+        System.out.println("└─────────────────────────────┘");
+        System.out.print("Escolha: ");
+    }
+
+
 
 }

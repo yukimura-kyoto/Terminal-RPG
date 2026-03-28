@@ -1,12 +1,15 @@
 import Inventory.Weapons;
 import Menu.Start;
 import Player_NPC.Player;
+import Menu.Combat;
 import Menu.Events;
+import jdk.jfr.Event;
+
+import static Menu.Events.combat;
 import static Menu.Events.randomNPC;
 
 public class Main {
     public static void main(String[] args) {
-
 
         // Tem que tirar isso de comentario depois
         // Criando novo Jogador
@@ -24,10 +27,11 @@ public class Main {
         // Print dos Status do Player
         Start.printStatus(Jogador);
 
-        while (Jogador.health > 0 ){
-            randomNPC();
-            Jogador.health--;
-        }
+
+
+        Menu.Combat.startCombat(Jogador,randomNPC());
+
+        // Events.randomEvent(Jogador);
 
 
 
