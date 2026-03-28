@@ -1,6 +1,6 @@
-package Inventory;
+package Skills;
 
-public class W_Stats {
+public class Weapons_Stats {
 
     // Parte totalmente ignoravel, isso define os Status das armas
     // a menos que queira adicionar um novo tipo de Status
@@ -13,7 +13,7 @@ public class W_Stats {
     public double critChance; // 0.1 = 10%
     public double critMult;
 
-    public W_Stats(String name, int danoMin, int danoMax, String tipoDano, double critChance, double critMult) {
+    public Weapons_Stats(String name, int danoMin, int danoMax, String tipoDano, double critChance, double critMult) {
         this.name = name;
         this.danoMin = danoMin;
         this.danoMax = danoMax;

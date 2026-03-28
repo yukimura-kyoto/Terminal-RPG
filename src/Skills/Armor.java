@@ -1,4 +1,4 @@
-package Inventory;
+package Skills;
 
 public class Armor {
 

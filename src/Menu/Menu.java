@@ -2,7 +2,7 @@ package Menu;
 import Player_NPC.Player;
 import java.util.Scanner;
 
-public class Start {
+public class Menu {
 
     // Literalmente o Inicio
     public static String inicio() {
@@ -39,26 +39,14 @@ public class Start {
         System.out.println("===================================\n");
     }
 
-    public static void printAtaquePlayer(Player player){
-
-        int dano = Ataques.ataqueLeve(player);
-
-        System.out.println("┌─────────────────────────────┐");
-        System.out.println("│ ⚔️  " + player.name + " atacou com " + player.currentWeapon.name+"│");
-        System.out.println("│                             │");
-        System.out.println("│ 💥 Dano causado: " + dano);
-        System.out.println("└─────────────────────────────┘");
-    }
-
-    public static void decisaoPlayer(){
+    // Sabour quase inutil
+    public static void decisaoPlayer(Player player){
         System.out.println("┌─────────────────────────────┐");
         System.out.println("│     ⚔️  SUAS HABILIDADES    │");
-        System.out.println("├─────────────────────────────┤");
-        System.out.println("│ 1 - 🗡️  Ataque Leve         │");
-        System.out.println("│ 2 - ⚔️  Ataque Duplo        │");
-        System.out.println("│ 3 - 🛡️  Defender            │");
-        System.out.println("│ 4 - 🏃 Fugir                │");
         System.out.println("└─────────────────────────────┘");
+        for (int i = 0; i < player.Player_Moveset.size(); i++) {
+            System.out.println((i + 1) + " - " + player.Player_Moveset.get(i).getName());
+        }
         System.out.print("Escolha: ");
     }
 

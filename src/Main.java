@@ -1,11 +1,11 @@
-import Inventory.Weapons;
-import Menu.Start;
+import Player_NPC.Stats;
+import Skills.Skills;
+import Skills.Weapons;
+import Menu.Menu;
 import Player_NPC.Player;
 import Menu.Combat;
-import Menu.Events;
-import jdk.jfr.Event;
 
-import static Menu.Events.combat;
+import static Menu.Events.eventoPausa;
 import static Menu.Events.randomNPC;
 
 public class Main {
@@ -21,59 +21,24 @@ public class Main {
         Player Jogador = new Player
                 ("Nick's Burguer",20,10,5,5,1,0);
 
-        Jogador.equipWeapon(Weapons.Soco); // Arma padrao inicial, se quiser pode mudar depois
+        Jogador.equipWeapon(Weapons.Weapons_List.get(2)); // Arma padrao inicial, se quiser pode mudar depois
+
+        // Set do Moveset padrao
+        Jogador.Player_Moveset.add(Skills.moveset.get(0));
+        Jogador.Player_Moveset.add(Skills.moveset.get(1));
+        Jogador.Player_Moveset.add(Skills.moveset.get(2));
+        Jogador.Player_Moveset.add(Skills.moveset.get(3));
 
 
         // Print dos Status do Player
-        Start.printStatus(Jogador);
+        Menu.printStatus(Jogador);
+
+        //Teste combate
+        Stats npc = randomNPC();
+        Combat.InCombat(Jogador, npc);
+
+        // eventoPausa();
 
 
-
-        Menu.Combat.startCombat(Jogador,randomNPC());
-
-        // Events.randomEvent(Jogador);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//        Stats jaspian = NPC.Jaspian; // puxa o Jaspian la dos NPC
-//
-//        System.out.println("Vida do Inimigo: "+jaspian.health);
-//
-//        int dano = Rituals.rajadaCaotica();
-//
-//        jaspian.health = jaspian.health-dano;
-//
-//        System.out.println("O jogador causou " + dano + " de dano!");
-//        System.out.println("Vida do " +jaspian.name +" agora: " + jaspian.health);
     }
 }

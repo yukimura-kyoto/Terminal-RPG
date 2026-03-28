@@ -1,7 +1,9 @@
 package Player_NPC;
 import java.util.ArrayList;
-import Inventory.W_Stats;
-import Inventory.Weapons;
+
+import Skills.Usavel;
+import Skills.Weapons_Stats;
+import Skills.Attack_Stats;
 
 public class Player {
 
@@ -13,10 +15,10 @@ public class Player {
     public int esquiva;
     public int level;
     public double xp;
-    public W_Stats currentWeapon; // Isso e pra arma equipada
+    public Weapons_Stats currentWeapon; // Isso e pra arma equipada
 
     // Method pra equipar a arma
-    public void equipWeapon(W_Stats equipped) {
+    public void equipWeapon(Weapons_Stats equipped) {
         this.currentWeapon = equipped; // apenas define
     }
 
@@ -32,9 +34,15 @@ public class Player {
 
     }
 
-    // a porra do inventario vai se fuder
-    public ArrayList<W_Stats> inventario = new ArrayList<>();
-    public void addWeapon(W_Stats weapon){
-        this.inventario.add(weapon);
+    // Moveset
+    // serve só pra puxar o moveset
+    public ArrayList<Usavel> Player_Moveset = new ArrayList<>();
+
+    public void addSkill(Usavel skill) {
+        if (Player_Moveset.size() < 4) {
+            Player_Moveset.add(skill);
+        } else {
+            System.out.println("Moveset cheio!");
+        }
     }
 }
