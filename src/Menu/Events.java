@@ -4,11 +4,18 @@ import Entity.npc.NPC;
 import Entity.base.Stats;
 import Entity.npc.npcs.NPCRegistry;
 
+import static Menu.Menu.Clear;
+import static Menu.Menu.pause;
+
 public class Events {
 
     public static NPC randomNPC() {
+        Clear();
         NPC npc = NPCRegistry.getRandomNPC();
-        System.out.println("Você encontrou: " + npc.name);
+        System.out.println("Um inimigo aparece nas sombras...");
+        pause(1500);
+        System.out.println("É... " + npc.name + "!");
+        pause(2000);
         return npc;
     }
 

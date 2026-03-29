@@ -1,6 +1,6 @@
 package Skills;
 
-import Entity.player.Player;
+import Entity.base.Stats;
 
 public class Attack_Stats implements Usavel {
 
@@ -21,10 +21,10 @@ public class Attack_Stats implements Usavel {
     }
 
     // usa os atributos do jogador
-    public int usar(Player player) {
+    public int usar(Stats user) {
         // Pega o dano min e max da arma atual
-        int baseMin = player.currentWeapon.danoMin;
-        int baseMax = player.currentWeapon.danoMax;
+        int baseMin = user.currentWeapon.danoMin;
+        int baseMax = user.currentWeapon.danoMax;
 
         // isso e o multiplicador do dano que voce seta depois
         int danoMinFinal = (int)(baseMin * multMin);

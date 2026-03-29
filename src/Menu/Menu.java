@@ -1,4 +1,5 @@
 package Menu;
+import Entity.npc.NPC;
 import Entity.player.Player;
 import java.util.Scanner;
 
@@ -25,7 +26,7 @@ public class Menu {
     }
 
     // Print dos Status
-    public static void printStatus(Player player) {
+    public static void printStatusPlayer(Player player) {
         System.out.println("===================================");
         System.out.println("          STATUS DO PLAYER         ");
         System.out.println("===================================");
@@ -39,7 +40,18 @@ public class Menu {
         System.out.println("===================================\n");
     }
 
-    // Sabour quase inutil
+    public static void printStatusNPC(NPC npc) {
+        System.out.println("===================================");
+        System.out.println("         STATUS DO INIMIGO         ");
+        System.out.println("===================================\n");
+
+        System.out.println("Nome: " + npc.name);
+        System.out.println("Arma equipada: " + npc.currentWeapon.name+"\n");
+
+        System.out.println("===================================\n");
+    }
+
+    // Sabour Moveset do Player
     public static void decisaoPlayer(Player player){
         System.out.println("┌─────────────────────────────┐");
         System.out.println("│     ⚔️  SUAS HABILIDADES    │");
@@ -48,6 +60,15 @@ public class Menu {
             System.out.println((i + 1) + " - " + player.moveset.get(i).getName());
         }
         System.out.print("Escolha: ");
+    }
+
+    // um mini pause que o chat me deu pra deixar mais bonito
+    public static void pause(int ms) {
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 
 

@@ -1,6 +1,6 @@
 package Skills;
 
-import Entity.player.Player;
+import Entity.base.Stats;
 
 public class Ritual_Stats implements Usavel {
 
@@ -21,7 +21,7 @@ public class Ritual_Stats implements Usavel {
     }
 
     @Override
-    public int usar(Player player) {
+    public int usar(Stats user) {
 
         int dano = (int)(Math.random() * (danoMax - danoMin + 1)) + (int)danoMin;
 
