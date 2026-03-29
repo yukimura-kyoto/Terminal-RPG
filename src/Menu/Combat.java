@@ -1,26 +1,26 @@
 package Menu;
 
-import Player_NPC.NPC;
-import Player_NPC.Player;
-import Player_NPC.Stats;
-import Skills.Skills;
+import Entity.player.Player;
+import Entity.base.Stats;
 import Skills.Usavel;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Combat {
 
     public static Scanner sc = new Scanner(System.in);
     public static boolean turno = true;
+    public static Random rd = new Random();
 
     public static void TurnoPlayer(Player player, Stats npc){
 
         // Era pra ser diferente, so que ai eu mandei meu codigo e o chat me bateu
         int escolha = sc.nextInt();
 
-        if (escolha > 0 && escolha <= player.Player_Moveset.size()) {
+        if (escolha > 0 && escolha <= player.moveset.size()) {
 
-            Usavel skill = player.Player_Moveset.get(escolha - 1);
+            Usavel skill = player.moveset.get(escolha - 1);
 
             int dano = skill.usar(player);
 
@@ -37,8 +37,13 @@ public class Combat {
         }
     }
 
-    public static void TurnoNPC(Stats npc){
-        IO.println("six seven"+npc.health);
+    public static void TurnoNPC(Stats npc,Player player){
+        Usavel skill = npc.moveset.get(rd.nextInt(npc.moveset.size()));
+
+        System.out.println(npc.name + " usou " + skill.getName());
+
+        int dano = skill.usar(player);
+        System.out.println("Causou " + dano + " de dano!");
     }
 
     public static void InCombat(Player player, Stats npc){
@@ -48,9 +53,15 @@ public class Combat {
                 Menu.decisaoPlayer(player);
                 TurnoPlayer(player,npc);
             }else if (!turno){
-                TurnoNPC(npc);
+                TurnoNPC(npc, player);
             }
             turno = !turno;
+        }
+
+        if (player.health<=0){
+            IO.println("Voce Morreu para o "+npc.name);
+        }else if (npc.health<=0&&player.health>0){
+            IO.println("Voce Venceu do "+npc.name);
         }
     }
 

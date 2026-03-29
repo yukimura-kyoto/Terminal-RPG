@@ -1,5 +1,5 @@
 package Menu;
-import Player_NPC.Player;
+import Entity.player.Player;
 import java.util.Scanner;
 
 public class Menu {
@@ -44,8 +44,8 @@ public class Menu {
         System.out.println("┌─────────────────────────────┐");
         System.out.println("│     ⚔️  SUAS HABILIDADES    │");
         System.out.println("└─────────────────────────────┘");
-        for (int i = 0; i < player.Player_Moveset.size(); i++) {
-            System.out.println((i + 1) + " - " + player.Player_Moveset.get(i).getName());
+        for (int i = 0; i < player.moveset.size(); i++) {
+            System.out.println((i + 1) + " - " + player.moveset.get(i).getName());
         }
         System.out.print("Escolha: ");
     }

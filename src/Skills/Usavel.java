@@ -1,6 +1,6 @@
 package Skills;
 
-import Player_NPC.Player;
+import Entity.player.Player;
 
 public interface Usavel {
     int usar(Player player);

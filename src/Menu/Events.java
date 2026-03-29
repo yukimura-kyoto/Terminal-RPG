@@ -1,14 +1,13 @@
 package Menu;
 
-import Player_NPC.NPC;
-import Player_NPC.Player;
-import Player_NPC.Stats;
+import Entity.npc.NPC;
+import Entity.base.Stats;
+import Entity.npc.npcs.NPCRegistry;
 
 public class Events {
 
-    public static Stats randomNPC(){
-
-        Stats npc = NPC.getRandomNPC();
+    public static NPC randomNPC() {
+        NPC npc = NPCRegistry.getRandomNPC();
         System.out.println("Você encontrou: " + npc.name);
         return npc;
     }
