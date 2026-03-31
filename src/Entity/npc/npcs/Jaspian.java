@@ -11,7 +11,7 @@ import static Menu.Combat.rd;
 public class Jaspian extends NPC {
 
     public Jaspian() {
-        super("Jaspian", 100, 50, 5, 10);
+        super("Jaspian", 100, 50, 5, 10,50);
         equipWeapon(Weapons.Weapons_List.get(0));
         addSkill(Skills.moveset.get(0));
         addSkill(Skills.moveset.get(6));

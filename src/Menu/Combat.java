@@ -83,7 +83,15 @@ public class Combat {
         if (player.health<=0){
             IO.println("Voce Morreu para o "+npc.name);
         }else if (npc.health<=0&&player.health>0){
+            pause(1000);
             IO.println("Voce Venceu do "+npc.name);
+            pause(1000);
+            player.xp = player.xp+ npc.xpDrop;
+            IO.println("XP Ganho");
+            pause(1000);
+            IO.println(npc.xpDrop);
+            pause(1000);
+            turno=true;
         }
     }
 

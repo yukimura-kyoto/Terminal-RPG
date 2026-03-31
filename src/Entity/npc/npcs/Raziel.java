@@ -9,7 +9,7 @@ import Skills.Weapons;
 public class Raziel extends NPC {
 
     public Raziel() {
-        super("Raziel", 250, 125, 5, 10);
+        super("Raziel", 250, 125, 5, 10,250);
         equipWeapon(Weapons.Weapons_List.get(0));
         addSkill(Skills.moveset.get(1));
         addSkill(Skills.moveset.get(2));
