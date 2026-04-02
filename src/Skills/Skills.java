@@ -21,6 +21,7 @@ public class Skills {
         // Ataques basicos (Corpo a Corpo)
         moveset.add(new Attack_Stats("Ataque Leve", 1,1,0.1,1.5));
         moveset.add(new Attack_Stats("Ataque Duplo", 2,2,0.1,1.5));
+        moveset.add(new Attack_Stats("Combo Duelista",1.2,2,0.35,2.5));
 
         // Magias (Magias)
         moveset.add(new Ritual_Stats("Descarnar", 6,48,0.1,2));

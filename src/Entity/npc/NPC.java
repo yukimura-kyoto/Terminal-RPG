@@ -6,6 +6,7 @@ import Skills.Usavel;
 public abstract class NPC extends Stats {
 
     public boolean estaEsquivando = false;
+    public boolean estaBloqueando = false;
 
     public double xpDrop;
 

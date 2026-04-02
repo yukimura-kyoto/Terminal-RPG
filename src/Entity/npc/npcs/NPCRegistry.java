@@ -16,8 +16,9 @@ public class NPCRegistry {
     private static List<Supplier<NPC>> getTodos() {
         if (todos == null) {
             todos = List.of(
-                    Jaspian::new,
-                    Raziel::new
+//                    Jaspian::new,
+//                    Raziel::new,
+                    Gal::new
             );
         }
         return todos;

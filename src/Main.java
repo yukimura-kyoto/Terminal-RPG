@@ -36,13 +36,13 @@ public class Main {
         // Print dos Status do Entity.Entity.Player.Entity.Player
         Menu.printStatusPlayer(Jogador);
 
-        while (Jogador.health>0){
-            gameRandomEvent(Jogador);
-        }
+//        while (Jogador.health>0){
+//            gameRandomEvent(Jogador);
+//        }
 
         //Teste combate
-//        NPC npc = randomNPC();
-//        Combat.InCombat(Jogador, npc);
+        NPC npc = randomNPC();
+        Combat.InCombat(Jogador, npc);
 
         // eventoPausa();
 
