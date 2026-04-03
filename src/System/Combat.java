@@ -1,14 +1,13 @@
-package Menu;
+package System;
 
 import Entity.npc.NPC;
 import Entity.player.Player;
-import Entity.base.Stats;
 import Skills.Usavel;
 
 import java.util.Random;
 import java.util.Scanner;
 
-import static Menu.Menu.*;
+import static System.Menu.*;
 
 public class Combat {
 
@@ -55,6 +54,7 @@ public class Combat {
 
         int dano = skill.usar(npc);
         player.health -= dano;
+        npc.health += npc.curaPassiva;
 
         IO.println("┌─────────────────────────────┐");
         IO.println("│ 👹 " + npc.name + " ataca!");
@@ -64,6 +64,9 @@ public class Combat {
         IO.println("│ 🩸 Dano sofrido: " + dano);
         IO.println("└─────────────────────────────┘\n");
         pause(3000);
+
+        AtaquesDiferenciados(player, npc);
+
         Clear();
     }
 
@@ -92,6 +95,22 @@ public class Combat {
             IO.println(npc.xpDrop);
             pause(1000);
             turno=true;
+        }
+    }
+
+    public static void AtaquesDiferenciados(Player player, NPC npc){
+
+        // Succ te suga e joga de novo porq ele pode
+        if (npc.Sugando) {
+            IO.println("┌─────────────────────────────┐");
+            IO.println("│ 💨 " + npc.name + " te Sugou com forca!");
+            IO.println("│ "+npc.name+" vai atacar novamente");
+            IO.println("└─────────────────────────────┘");
+            turno = !turno;
+            npc.Sugando=false;
+            pause(3000);
+            Clear();
+            return;
         }
     }
 

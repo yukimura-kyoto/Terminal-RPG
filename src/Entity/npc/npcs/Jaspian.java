@@ -6,7 +6,7 @@ import Skills.Usavel;
 import Skills.Skills;
 import Skills.Weapons;
 
-import static Menu.Combat.rd;
+import static System.Combat.rd;
 
 public class Jaspian extends NPC {
 

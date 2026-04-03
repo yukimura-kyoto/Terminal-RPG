@@ -6,8 +6,7 @@ import Skills.Usavel;
 import Skills.Skills;
 import Skills.Weapons;
 
-import static Menu.Combat.rd;
-import static Menu.Combat.turno;
+import static System.Combat.rd;
 
 public class Gal extends NPC {
 

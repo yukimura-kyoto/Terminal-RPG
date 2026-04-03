@@ -16,9 +16,18 @@ public class NPCRegistry {
     private static List<Supplier<NPC>> getTodos() {
         if (todos == null) {
             todos = List.of(
-//                    Jaspian::new,
-//                    Raziel::new,
-                    Gal::new
+                    Jaspian::new, // 0
+                    Raziel::new, // 1
+                    Succ::new // 2
+            );
+        }
+        return todos;
+    }
+
+    private static List<Supplier<NPC>> getBoss() {
+        if (todos == null) {
+            todos = List.of(
+                    O_Diabo::new // 0
             );
         }
         return todos;
@@ -28,5 +37,9 @@ public class NPCRegistry {
         return getTodos()
                 .get(rd.nextInt(getTodos().size()))
                 .get(); // 👈 AQUI que nasce o NPC novo
+    }
+
+    public static NPC getNPCByIndex(int index) {
+        return getBoss().get(index).get();
     }
 }
