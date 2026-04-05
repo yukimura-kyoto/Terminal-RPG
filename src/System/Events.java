@@ -11,6 +11,7 @@ import Skills.Weapons;
 import Skills.Skills;
 
 import static System.Combat.rd;
+import static System.Complement.typeText;
 import static System.Menu.Clear;
 import static System.Menu.pause;
 
@@ -18,6 +19,7 @@ public class Events {
 
     public static Scanner sc = new Scanner(System.in);
     public static int DesicaoCapeta;
+    public static boolean valido = false;
 
     public static NPC randomNPC() {
         Clear();
@@ -92,8 +94,8 @@ public class Events {
                     aceitarDiabo(player);
                     respostaValida = true;
 
-                    pause(2500);
                     System.out.println("Eu e meu associado esperamos por voce");
+                    pause(2500);
                     break;
 
                 default:
@@ -120,50 +122,101 @@ public class Events {
                 player.health = player.health-(player.health/5);
                 break;
             case 2:
-                // puta que pariu muito obrigado Claude IA por fazer isso pra mim
+                // Gracias chat por fazer isso por mim
                 player.stamina = player.stamina - (player.stamina / 5);
+
                 Usavel novaSkill;
                 do {
                     novaSkill = Skills.moveset.get(rd.nextInt(Skills.moveset.size()));
                 } while (player.moveset.contains(novaSkill));
+
                 System.out.println("O Diabo: Eu lhe concedo... " + novaSkill.getName() + ".\n");
                 pause(2000);
 
-                // aa linha separando
-                System.out.println("============================================");
-                System.out.println("O Diabo: Qual skill voce deseja substituir?");
-                for (int j = 0; j < player.moveset.size(); j++) {
-                    System.out.println((j + 1) + " - " + player.moveset.get(j).getName());
-                }
-                int escolha = sc.nextInt();
-                if (escolha > 0 && escolha <= player.moveset.size()) {
-                    player.moveset.set(escolha - 1, novaSkill);
-                    System.out.println("O Diabo: " + novaSkill.getName() + " agora e seu.");
+                // 👇 VERIFICA LIMITE
+                if (player.moveset.size() < 4) {
+
+                    player.moveset.add(novaSkill);
+                    System.out.println("Você aprendeu " + novaSkill.getName() + "!");
+
                 } else {
-                    System.out.println("Escolha invalida."); // ta certo isso?
+
+                    System.out.println("============================================");
+                    System.out.println("O Diabo: Qual skill voce deseja substituir?");
+
+                    for (int j = 0; j < player.moveset.size(); j++) {
+                        System.out.println((j + 1) + " - " + player.moveset.get(j).getName());
+                    }
+
+                    int escolha = sc.nextInt();
+
+                    if (escolha > 0 && escolha <= player.moveset.size()) {
+                        player.moveset.set(escolha - 1, novaSkill);
+                        System.out.println("O Diabo: " + novaSkill.getName() + " agora e seu.");
+                    } else {
+                        System.out.println("Escolha invalida.");
+                    }
+                }
+
+                break;
+
+            case 3: //
+                System.out.println("O Diabo: Quanta Stamina voce gostaria de Sacrificar para a sua Gloria?");
+
+                while (true) {
+                    int a = sc.nextInt();
+
+                    if (a > 0 && player.stamina >= a) {
+                        player.health += a;
+                        player.stamina -= a;
+                        break;
+                    } else {
+                        System.out.println("Valor invalido.");
+                    }
                 }
                 break;
 
-            case 3: // todo tenho q fazer isso aq nao ficar negativo depois
-                System.out.println("O Diabo: Quanta Stamina voce gostaria de Sacrificar para a sua Graca?");
-                int a = sc.nextInt();
-                player.health = player.health+a;
-                player.stamina= player.stamina-a;
+            case 4: //
+                System.out.println("O Diabo: Quanto de sua Vida voce gostaria de Sacrificar para a sua Graça?");
+                while (true) {
+                    int b = sc.nextInt();
+
+                    if (b > 0 && player.health >= b) {
+                        player.stamina += b;
+                        player.health -= b;
+                        break;
+                    } else {
+                        System.out.println("Valor invalido.");
+                    }
+                }
                 break;
 
-            case 4: // todo isso aqui tbm
-                System.out.println("O Diabo: Quanto de sua Vida voce gostaria de Sacrificar para a sua Gloria?");
-                int b = sc.nextInt();
-                player.health = player.health-b;
-                player.stamina= player.stamina+b;
+                }
+    }
 
+    // todo aaahhh tenho q resolver isso depois
+    public static void Hospital(Player player){
+        typeText("Você encontra um hospital abandonado.\n" +
+                "\n" +
+                "As luzes piscam.\n" +
+                "O silêncio é pesado demais para um lugar assim.\n" +
+                "\n" +
+                "O cheiro de desinfetante ainda está no ar...\n" +
+                "Mas algo não parece certo.",100);
+
+        System.out.println("1 - Entrar\n" +
+                "2 - Ir embora");
+
+        int a = sc.nextInt();
+
+        switch (a){
+            case 1:
+                break;
+            case 2:
                 break;
             default:
+
         }
-        // arma aleatoria -- perde 20% da vida
-        // ritual aleatorio -- perde 20% de stamina
-        // sacrifica stamina por vida
-        // sacrifica vida por stamina
     }
 
     public static void gameRandomEvent(Player player){

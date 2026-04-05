@@ -1,7 +1,9 @@
+import Entity.npc.NPC;
 import Skills.Skills;
 import Skills.Weapons;
 import System.Menu;
 import Entity.player.Player;
+import System.Combat;
 
 import static System.Events.*;
 import static System.Menu.StartGame;
@@ -11,38 +13,34 @@ public class Main {
 
         Skills.moveset.size(); // Sem isso tudo explode
 
-        // Tem que tirar isso de comentario depois
-        // Criando novo Jogador
+        // Isso sempre fica ativo pra aparecer o Menu Inicial
+        Player Jogador = StartGame();
 
-//        Player Jogador = new Player
-//                ("Nick's Burguer",9999,10,5,5,1,0);
-//
-//        Jogador.equipWeapon(Weapons.Weapons_List.get(2)); // Arma padrao inicial, se quiser pode mudar depois
-//
-//        // Set do Moveset padrao
-//        Jogador.moveset.add(Skills.moveset.get(0));
-//        Jogador.moveset.add(Skills.moveset.get(1));
-//        Jogador.moveset.add(Skills.moveset.get(2));
-//        Jogador.moveset.add(Skills.moveset.get(9));
+// ------------------------------------------------------------------------------------------------------------------------------------
+        // Isso starta o game normal
+        while (Jogador.health>0){
+            gameRandomEvent(Jogador);
+        }
+// ------------------------------------------------------------------------------------------------------------------------------------
 
 
-        // Print dos Status do Entity.Entity.Player.Entity.Player
-//        Menu.printStatusPlayer(Jogador);
 
-        StartGame();
 
+
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------
+        // Sessão pra Debug/Testes
+
+//        Hospital(Jogador);
         // teste capeta
-        // Hexatombe(Jogador);
+//         Hexatombe(Jogador);
 
-//        while (Jogador.health>0){
-//            gameRandomEvent(Jogador);
-//        }
 
         //Teste combate
 //       NPC npc = randomNPC();
 //       Combat.InCombat(Jogador, npc);
-
-        // eventoPausa();
 
 
     }

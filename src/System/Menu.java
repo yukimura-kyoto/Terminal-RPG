@@ -126,7 +126,7 @@ public class Menu {
     }
 
     // aaahhh menu pra comecar o jogo
-    public static void StartGame(){
+    public static Player StartGame(){
         Player Jogador = null;
         System.out.println("===================================\n"+
                 "1 - Novo Jogo\n"+
@@ -169,6 +169,8 @@ public class Menu {
                 break;
             default:
         }
+
+        return Jogador;
     }
 
 
