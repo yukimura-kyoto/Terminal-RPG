@@ -7,6 +7,7 @@ import Skills.Usavel;
 import java.util.Random;
 import java.util.Scanner;
 
+import static System.Complement.checkLevelUp;
 import static System.Menu.*;
 
 public class Combat {
@@ -94,6 +95,7 @@ public class Combat {
             pause(1000);
             IO.println(npc.xpDrop);
             pause(1000);
+            checkLevelUp(player);
             turno=true;
         }
     }

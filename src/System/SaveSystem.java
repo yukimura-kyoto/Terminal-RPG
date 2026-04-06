@@ -25,6 +25,7 @@ public class SaveSystem {
             fw.write(player.esquiva + "\n");
             fw.write(player.level + "\n");
             fw.write(player.xp + "\n");
+            fw.write(player.xpToNext+"\n");
             fw.write(Weapons.Weapons_List.indexOf(player.currentWeapon) + "\n");
             for (Usavel skill : player.moveset) {
                 fw.write(Skills.moveset.indexOf(skill) + "\n");
@@ -47,8 +48,9 @@ public class SaveSystem {
             int esquiva = Integer.parseInt(br.readLine());
             int level = Integer.parseInt(br.readLine());
             double xp = Double.parseDouble(br.readLine());
+            double xpToNext = Double.parseDouble(br.readLine());
 
-            Player player = new Player(name, health, stamina, armadura, esquiva, level, xp);
+            Player player = new Player(name, health, stamina, armadura, esquiva, level, xp, xpToNext);
 
             int armaIndex = Integer.parseInt(br.readLine());
             player.equipWeapon(Weapons.Weapons_List.get(armaIndex));

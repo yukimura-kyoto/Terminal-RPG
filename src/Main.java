@@ -5,6 +5,9 @@ import System.Menu;
 import Entity.player.Player;
 import System.Combat;
 
+import static Entity.npc.npcs.NPCRegistry.getBossByIndex;
+import static Entity.npc.npcs.NPCRegistry.getNPCByIndex;
+import static System.Complement.checkLevelUp;
 import static System.Events.*;
 import static System.Menu.StartGame;
 
@@ -39,8 +42,10 @@ public class Main {
 
 
         //Teste combate
-//       NPC npc = randomNPC();
-//       Combat.InCombat(Jogador, npc);
+//        Combat.InCombat(Jogador, getBossByIndex(0));
+
+
+//       Combat.InCombat(Jogador, getNPCByIndex(2));
 
 
     }

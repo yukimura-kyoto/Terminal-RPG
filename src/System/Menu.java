@@ -143,7 +143,7 @@ public class Menu {
                 String P_Name = sc.nextLine();
 
                 // tenho q resolver os stats depois mano ta muito desbalanceado
-                Jogador = new Player(P_Name, 99999, 10, 5, 5, 1, 0);
+                Jogador = new Player(P_Name, 99999, 10, 5, 5, 1, 0,50);
                 Jogador.equipWeapon(Weapons.Weapons_List.get(0)); // Arma Inicial e um soco lol
                 Jogador.moveset.add(Skills.moveset.get(0)); // Primeira Skill e um ataque leve lol
 

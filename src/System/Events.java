@@ -84,7 +84,7 @@ public class Events {
                         throw new RuntimeException(e);
                     }
 
-                    NPC npc = NPCRegistry.getNPCByIndex(0); // isso puxa o diabo pelo getboss
+                    NPC npc = NPCRegistry.getBossByIndex(0); // isso puxa o diabo pelo getboss
                     Combat.InCombat(player, npc);
 
 

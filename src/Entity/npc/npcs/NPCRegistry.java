@@ -1,7 +1,6 @@
 package Entity.npc.npcs;
 
 import Entity.npc.NPC;
-import Entity.npc.npcs.Jaspian;
 
 import java.util.List;
 import java.util.Random;
@@ -39,7 +38,13 @@ public class NPCRegistry {
                 .get(); // 👈 AQUI que nasce o NPC novo
     }
 
+    // Esse pega o NPC pelo index dele
     public static NPC getNPCByIndex(int index) {
+        return getTodos().get(index).get();
+    }
+
+    // isso se usa pra pegar o boss pela index dele
+    public static NPC getBossByIndex(int index) {
         return getBoss().get(index).get();
     }
 }
