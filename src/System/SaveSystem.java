@@ -2,7 +2,7 @@ package System;
 
 import Entity.player.Player;
 import Skills.Skills;
-import Skills.Usavel;
+import Skills.base.Usavel;
 import Skills.Weapons;
 
 import java.io.*;

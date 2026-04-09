@@ -1,6 +1,8 @@
-package Skills;
+package Skills.types;
 
 import Entity.base.Stats;
+import Skills.base.Ritual_Stats;
+import Skills.base.TipoDano;
 
 public class Special_Skills {
 
@@ -8,19 +10,14 @@ public class Special_Skills {
 
         public double lifestealPct; // % do dano que cura
 
-        public RitualLifesteal(String name, double danoMin, double danoMax, double critChance, double critMult, double lifestealPct) {
-            super(name, danoMin, danoMax, critChance, critMult);
+        public RitualLifesteal(String name, double danoMin, double danoMax, double lifestealPct, TipoDano tipoDano) {
+            super(name, danoMin, danoMax, tipoDano);
             this.lifestealPct = lifestealPct;
         }
 
         @Override
         public int usar(Stats user) {
             int dano = (int)(Math.random() * (danoMax - danoMin + 1)) + (int)danoMin;
-
-            if (Math.random() < critChance) {
-                dano *= critMult;
-                System.out.println("CRÍTICO!");
-            }
 
             int cura = (int)(dano * lifestealPct);
             user.health += cura;

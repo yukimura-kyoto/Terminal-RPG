@@ -1,4 +1,4 @@
-package Skills;
+package Skills.types;
 
 public class Armor {
 

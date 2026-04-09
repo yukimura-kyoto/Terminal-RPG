@@ -3,7 +3,7 @@ import Entity.npc.NPC;
 import Entity.player.Player;
 import Skills.Skills;
 import Skills.Weapons;
-import Skills.Usavel;
+import Skills.base.Usavel;
 
 import java.util.Scanner;
 
@@ -31,6 +31,12 @@ public class Menu {
         for (int i = 0; i < 50; i++) {
             System.out.println();
         }
+    }
+
+    // cara nem sei porq criei isso é muita preguiça pro ser humano né kkkkk
+    public static int opcaoInvalida(Scanner sc){
+        System.out.println("Opção Invalida");
+        return sc.nextInt();
     }
 
     // Print dos Status
@@ -143,7 +149,7 @@ public class Menu {
                 String P_Name = sc.nextLine();
 
                 // tenho q resolver os stats depois mano ta muito desbalanceado
-                Jogador = new Player(P_Name, 99999, 10, 5, 5, 1, 0,50);
+                Jogador = new Player(P_Name, 99999, 40, 5, 5, 1, 0,50);
                 Jogador.equipWeapon(Weapons.Weapons_List.get(0)); // Arma Inicial e um soco lol
                 Jogador.moveset.add(Skills.moveset.get(0)); // Primeira Skill e um ataque leve lol
 
@@ -167,7 +173,7 @@ public class Menu {
                 pause(2500);
                 System.exit(1);
                 break;
-            default:
+            default: opcaoInvalida(sc);
         }
 
         return Jogador;

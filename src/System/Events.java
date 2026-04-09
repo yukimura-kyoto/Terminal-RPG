@@ -6,14 +6,13 @@ import Entity.player.Player;
 
 import java.util.Scanner;
 import System.Menu.GlitchEffect;
-import Skills.Usavel;
+import Skills.base.Usavel;
 import Skills.Weapons;
 import Skills.Skills;
 
 import static System.Combat.rd;
 import static System.Complement.typeText;
-import static System.Menu.Clear;
-import static System.Menu.pause;
+import static System.Menu.*;
 
 public class Events {
 
@@ -98,10 +97,7 @@ public class Events {
                     pause(2500);
                     break;
 
-                default:
-                    System.out.println("Escolha uma opcao VALIDA!");
-                    respostaValida = false;
-                    DesicaoCapeta = sc.nextInt();
+                default: opcaoInvalida(sc);
             }
         }
     }
@@ -214,7 +210,7 @@ public class Events {
                 break;
             case 2:
                 break;
-            default:
+            default: opcaoInvalida(sc);
 
         }
     }

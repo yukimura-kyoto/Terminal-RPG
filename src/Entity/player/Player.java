@@ -1,11 +1,6 @@
 package Entity.player;
-import java.util.ArrayList;
 
 import Entity.base.Stats;
-import Skills.Usavel;
-import Skills.Weapons_Stats;
-
-import static Skills.Skills.moveset;
 
 public class Player extends Stats {
 

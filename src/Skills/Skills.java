@@ -1,38 +1,31 @@
 package Skills;
 
 import java.util.ArrayList;
-import Skills.Special_Skills;
+
+import Skills.base.TipoDano;
+import Skills.types.Attack_Stats;
+import Skills.base.Ritual_Stats;
+import Skills.base.Usavel;
+import Skills.types.Special_Skills;
 
 public class Skills {
 
-    // ===== SKILLS ID =====
-    // 0 - Ataque Leve
-    // 1 - Ataque Duplo
-    // 2 - Descarnar
-    // 3 - Rajada Caótica
-    // 4 - Chama do Abismo
-    // 5 - Lâmina Espectral
-    // 6 - Ruptura Mental
-    // =====================
+    // cara isso vai ficar bem baguncado quando tiver muito ataque
 
     public static ArrayList<Usavel> moveset = new ArrayList<>();
 
     static {
-        // Ataques basicos (Corpo a Corpo)
-        moveset.add(new Attack_Stats("Ataque Leve", 1,1,0.1,1.5)); // 0
-        moveset.add(new Attack_Stats("Ataque Duplo", 2,2,0.1,1.5));// 1
+        moveset.add(new Attack_Stats("Ataque Leve", 1,1,0.1,1.5, 0)); // 0
+        moveset.add(new Attack_Stats("Ataque Duplo", 2,2,0.1,1.5, 2));// 1
+        moveset.add(new Attack_Stats("Golpe Pesado", 1.5,2,0.1,1.5,0)); // 2
+        moveset.add(new Attack_Stats("Combo Duelista",1.2,2,0.35,2.5,10)); // 3
 
-        // Magias (Magias)
-        moveset.add(new Ritual_Stats("Descarnar", 6,48,0.1,2)); // 2
-        moveset.add(new Ritual_Stats("Rajada Caótica", 8,64,0.1,2));// 3
-        moveset.add(new Ritual_Stats("Chama do Abismo", 18,32,0.2,2));// 4
-        moveset.add(new Ritual_Stats("Lamina Espectral",14,26,0.3,2.2)); // 5
-        moveset.add(new Ritual_Stats("Ruptura Mental",10,40,0.15,2.5));// 6
-        moveset.add(new Ritual_Stats("Correntes do Outro Lado",16,28,0.18,1.8)); //7
-        moveset.add(new Ritual_Stats("Olhar do Vazio",22,35,0.1,3)); // 8
-        moveset.add(new Special_Skills.RitualLifesteal("Parasita Sombrio", 11, 20, 0.20, 1.6, 0.3)); //9
-        moveset.add(new Ritual_Stats("Explodir em Sangue",6,60,0,0));//10
-        moveset.add(new Attack_Stats("Combo Duelista",1.2,2,0.35,2.5));//11
+
+        moveset.add(new Ritual_Stats("Descarnar", 6,48, TipoDano.SANGUE)); // 4
+        moveset.add(new Ritual_Stats("Rajada Caótica", 8,64, TipoDano.ENERGIA));// 5
+        moveset.add(new Ritual_Stats("Hemofagia",6,36, TipoDano.SANGUE)); // 6
+        moveset.add(new Special_Skills.RitualLifesteal("Parasita Sombrio", 11, 20, 0.3, TipoDano.MORTE)); //7
+        moveset.add(new Ritual_Stats("Explodir em Sangue",6,60, TipoDano.SANGUE));// 8
 
     }
 }

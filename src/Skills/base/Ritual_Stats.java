@@ -1,4 +1,4 @@
-package Skills;
+package Skills.base;
 
 import Entity.base.Stats;
 
@@ -8,27 +8,26 @@ public class Ritual_Stats implements Usavel {
     public String name;
     public double danoMin;
     public double danoMax;
-    public double critChance;
-    public double critMult;
+    public TipoDano tipoDano;
 
     // seis sete resenha
-    public Ritual_Stats(String name, double danoMin, double danoMax, double critChance, double critMult) {
+    public Ritual_Stats(String name, double danoMin, double danoMax, TipoDano tipoDano) {
         this.name = name;
         this.danoMin = danoMin;
         this.danoMax = danoMax;
-        this.critChance = critChance;
-        this.critMult = critMult;
+        this.tipoDano = tipoDano;
+    }
+
+    // Retorna o tipo do dano
+    @Override
+    public TipoDano getTipo(Stats user) {
+        return tipoDano;
     }
 
     @Override
     public int usar(Stats user) {
 
         int dano = (int)(Math.random() * (danoMax - danoMin + 1)) + (int)danoMin;
-
-        if (Math.random() < critChance) {
-            dano *= critMult;
-            System.out.println("CRÍTICO!");
-        }
 
         return dano;
     }

@@ -1,7 +1,7 @@
 package Entity.base;
 
-import Skills.Usavel;
-import Skills.Weapons_Stats;
+import Skills.base.Usavel;
+import Skills.base.Weapons_Stats;
 
 import java.util.ArrayList;
 

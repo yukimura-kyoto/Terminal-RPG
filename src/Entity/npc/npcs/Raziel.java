@@ -3,7 +3,7 @@ package Entity.npc.npcs;
 import Entity.npc.NPC;
 import Entity.base.Stats;
 import Skills.Skills;
-import Skills.Usavel;
+import Skills.base.Usavel;
 import Skills.Weapons;
 
 public class Raziel extends NPC {

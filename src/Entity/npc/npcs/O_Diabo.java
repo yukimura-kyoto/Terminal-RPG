@@ -2,7 +2,7 @@ package Entity.npc.npcs;
 
 import Entity.npc.NPC;
 import Entity.base.Stats;
-import Skills.Usavel;
+import Skills.base.Usavel;
 import Skills.Skills;
 import Skills.Weapons;
 
@@ -10,12 +10,13 @@ import static System.Combat.rd;
 
 public class O_Diabo extends NPC {
 
-
+    // res
+    // balistico = 20, 20 impacto, 20 perfuracao,
     public O_Diabo() {
-        super("O Diabo", 1666, 2000, 66, 55,666);
+        super("O Diabo", 1667, 2000, 67, 55,666);
         // Depois add mais armas pra ele ter varios meele
         equipWeapon(Weapons.Weapons_List.get(5));
-        addSkill(Skills.moveset.get(10)); // Explodir em Sangue
+        addSkill(Skills.moveset.get(8)); // Explodir em Sangue
         addSkill(Skills.moveset.get(0)); // Soco
 
         curaPassiva = 50; // ele cura isso ai de vida nos rounds

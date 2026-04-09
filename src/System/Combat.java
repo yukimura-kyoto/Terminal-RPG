@@ -2,7 +2,7 @@ package System;
 
 import Entity.npc.NPC;
 import Entity.player.Player;
-import Skills.Usavel;
+import Skills.base.Usavel;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -105,7 +105,7 @@ public class Combat {
         // Succ te suga e joga de novo porq ele pode
         if (npc.Sugando) {
             IO.println("┌─────────────────────────────┐");
-            IO.println("│ 💨 " + npc.name + " te Sugou com forca!");
+            IO.println("│ 💨 " + npc.name + " te Sugou com força!");
             IO.println("│ "+npc.name+" vai atacar novamente");
             IO.println("└─────────────────────────────┘");
             turno = !turno;

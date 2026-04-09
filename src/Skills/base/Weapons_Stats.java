@@ -1,4 +1,4 @@
-package Skills;
+package Skills.base;
 
 public class Weapons_Stats {
 
@@ -9,17 +9,17 @@ public class Weapons_Stats {
     public String name;
     public int danoMin;
     public int danoMax;
-    public String tipoDano;
     public double critChance; // 0.1 = 10%
     public double critMult;
+    public TipoDano tipoDano;
 
-    public Weapons_Stats(String name, int danoMin, int danoMax, String tipoDano, double critChance, double critMult) {
+    public Weapons_Stats(String name, int danoMin, int danoMax, double critChance, double critMult, TipoDano tipoDano) {
         this.name = name;
         this.danoMin = danoMin;
         this.danoMax = danoMax;
-        this.tipoDano = tipoDano;
         this.critChance = critChance;
         this.critMult = critMult;
+        this.tipoDano = tipoDano;
     }
 
     public int calcularDano() {
