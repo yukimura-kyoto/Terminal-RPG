@@ -10,7 +10,7 @@
 
 ---
 
-## ⚔️ Skills
+## ⚔️ Old.Skills
 
 | ID | Nome | Tipo |
 |----|------|------|
