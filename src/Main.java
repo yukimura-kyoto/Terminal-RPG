@@ -24,7 +24,21 @@ public class Main {
 
             System.out.println("Vigor: "+player.getVigor()+"\n");
 
-            System.out.println(player.getCurrentHp() + "/" + player.getMaxHp());
+            double hpPercent = (player.getCurrentHp() * 100.0) / player.getMaxHp();
+
+            int bars = (int) (hpPercent / 10);
+
+            System.out.print("HP [");
+
+            for (int i = 0; i < 10; i++) {
+                if (i < bars) {
+                    System.out.print("█");
+                } else {
+                    System.out.print("░");
+                }
+            }
+
+            System.out.println("]");
 
             System.out.println("1 - Tomar Dano (1-50)\n" +
                     "2 - Cura (1-50)");
