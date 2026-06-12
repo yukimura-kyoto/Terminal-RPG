@@ -2,41 +2,60 @@ package model.entities;
 
 public class BaseStats {
 
-    public String name;
+    private String name;
 
-    public int vigor;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     // Health
+    private int vigor;
 
-    public int endurance;
+    public int getVigor() {
+        return vigor;
+    }
+
+    // Validation for invalid stats
+    public void setVigor(int vigor) {
+        if (vigor < 1) {
+            this.vigor = 1;
+        } else if (vigor > 99) {
+            this.vigor = 99;
+        } else {
+            this.vigor = vigor;
+        }
+    }
+
+    private int endurance;
     // stamina + equip load
 
-    public int strength;
+    private int strength;
     // Influences player physical/strike/slash/pierce defense and provides Attack Power
     // scaling for weapons that utilize the stat
     // Attribute required to wield heavy armaments.
 
-    public int dexterity;
+    private int dexterity;
     // Also boosts attack power of dexterity-scaling armaments, reduces
     // casting time of Spells.
 
-    public int intelligence;
+    private int intelligence;
     // Attribute required to perform todo glintstone Sorceries.
     // Also boosts the power of intelligence-scaling Sorceries
     // and improves Magic Resistance.
 
-    public int faith;
+    private int faith;
     // Attribute required to perform sacred Incantations.
     // Also boosts the power of faith-scaling Incantations.
 
-    public int arcane;
+    private int arcane;
     // Influences player holy defense and death resistance
     // provides AP scaling for weapons that utilize the stat
     // increases item discovery (linearly)
     // and provides scaling for poison, bleed, sleep, and madness buildup.
-
-    public int health;
-    public int stamina;
-    public int equipLoad;
 
     // equipment
     // todo public Weapons_Stats currentWeapon;
@@ -45,23 +64,38 @@ public class BaseStats {
         this.name = name;
     }
 
-    public static int getHP(int vigor) {
+    // Stats
 
-        if (vigor <= 23)
-            return 300 + (vigor * 19); // 737
+    private int maxHp;
+    private int currentHp;
 
-        if (vigor <= 40)
-            return 737 +(vigor*42); // 1451
+    public void setCurrentHp(int currentHp) {
 
-        if (vigor <=60)
-            return 1451+(vigor*22); // 1891
+        if (currentHp < 0) {
+            this.currentHp = 0;
 
-        if (vigor<=90)
-            return 1891+(vigor*6); // 2071
+        } else if (currentHp > maxHp) {
+            this.currentHp = maxHp;
 
-        if (vigor<=99)
-            return 2071+(vigor*4); // 2107
-
-        return 1900 + (vigor - 60) * 10;
+        } else {
+            this.currentHp = currentHp;
+        }
     }
+
+    public int getMaxHp() {
+        return maxHp;
+    }
+
+    public void setMaxHp(int maxHp) {
+        this.maxHp = maxHp;
+    }
+
+    public int getCurrentHp() {
+        return currentHp;
+    }
+
+    private int maxStamina;
+    private int currentStamina;
+
+    private double equipLoad;
 }
