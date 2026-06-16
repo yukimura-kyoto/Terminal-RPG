@@ -21,17 +21,29 @@ public class BaseStats {
 
     // Validation for invalid stats
     public void setVigor(int vigor) {
-        if (vigor < 1) {
-            this.vigor = 1;
-        } else if (vigor > 99) {
-            this.vigor = 99;
-        } else {
-            this.vigor = vigor;
-        }
+        this.vigor = validadeAttribute(vigor);
     }
 
+    // Mind
+    private int mind;
+
+    public int getMind() {
+        return mind;
+    }
+
+    public void setMind(int mind) {
+        this.mind = validadeAttribute(mind);
+    }
+
+    // Endurance
     private int endurance;
     // stamina + equip load
+
+    public int getEndurance(){return endurance;}
+
+    public void setEndurance(int endurance){
+        this.endurance = validadeAttribute(endurance);
+    }
 
     private int strength;
     // Influences player physical/strike/slash/pierce defense and provides Attack Power
@@ -66,11 +78,11 @@ public class BaseStats {
 
     // Stats
 
+    // HP
     private int maxHp;
     private int currentHp;
 
     public void setCurrentHp(int currentHp) {
-
         if (currentHp < 0) {
             this.currentHp = 0;
 
@@ -94,8 +106,50 @@ public class BaseStats {
         return currentHp;
     }
 
+    // FP
+
+    private int maxFp;
+    private int currentFp;
+
+    public void setCurrentFp(int currentFp) {
+        if (currentFp < 0) {
+            this.currentFp = 0;
+
+        } else if (currentFp > maxFp) {
+            this.currentFp = maxFp;
+
+        } else {
+            this.currentFp = currentFp;
+        }
+    }
+
+    public int getMaxFp() {
+        return maxFp;
+    }
+
+    public void setMaxFp(int maxFp) {
+        this.maxFp = maxFp;
+    }
+
+    public int getCurrentFp() {
+        return currentFp;
+    }
+
+    // Equip Load
+
     private int maxStamina;
     private int currentStamina;
 
     private double equipLoad;
+
+    // Validação de Atributo
+    private int validadeAttribute(int value){
+        if (value < 1){
+            return 1;
+        }
+        if (value > 99){
+            return 99;
+        }
+        return value;
+    }
 }

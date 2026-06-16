@@ -1,9 +1,9 @@
 package engine.scaling;
 
-public class HPScaling {
+public class VigorScaling {
 
     // HP Scaling
-    public static int calculate(int vigor) {
+    public static int getHP(int vigor) {
 
         double hp;
 
