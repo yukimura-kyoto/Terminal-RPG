@@ -1,4 +1,4 @@
-package util;
+package util.ui;
 
 public class TextFormatter {
 }
