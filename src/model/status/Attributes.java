@@ -1,4 +1,4 @@
-package model.stats;
+package model.status;
 
 public class Attributes {
 
@@ -123,6 +123,19 @@ public class Attributes {
 
     public Attributes(String name) {
         this.name = name;
+    }
+
+    // Level Calculation
+    // Add up all the attributes and subtract 79, this generates the current level.
+    public int getLevel() {
+        return vigor +
+                mind +
+                endurance +
+                strength +
+                dexterity +
+                intelligence +
+                faith +
+                arcane - 79;
     }
 
     // Validação de Atributo

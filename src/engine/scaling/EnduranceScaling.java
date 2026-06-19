@@ -1,6 +1,6 @@
 package engine.scaling;
 
-public class EquipLoadScaling {
+public class EnduranceScaling {
     // Equip Load Scaling
     public static double getEquipLoad(int endurance) {
 

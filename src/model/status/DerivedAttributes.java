@@ -1,4 +1,6 @@
-package model.stats;
+package model.status;
+
+import model.enums.RollType;
 
 public class DerivedAttributes {
 
@@ -39,18 +41,48 @@ public class DerivedAttributes {
         return currentFp;
     }
 
+    // Runes
+
+    private int currentRunes;
+
+    public void setCurrentRunes(int currentRunes){ // Max runes that player can hold is 999,999,999
+        int maxRunes = 999_999_999;
+        this.currentRunes = validateCurrent(currentRunes, maxRunes); }
+
+    public int getCurrentRunes(){ return currentRunes; }
+
     // Equip Load
 
     private double currentEquipLoad;
     private double maxEquipLoad;
 
     public void setCurrentEquipLoad(double currentEquipLoad){
-        this.currentEquipLoad = validateCurrent(currentEquipLoad,maxEquipLoad);
+        if (currentEquipLoad < 0) {
+            this.currentEquipLoad = 0;
+        } else {
+            this.currentEquipLoad = currentEquipLoad;
+        }
     }
 
     public double getMaxEquipLoad(){ return maxEquipLoad;}
     public void setMaxEquipLoad(double maxEquipLoad){ this.maxEquipLoad = maxEquipLoad; }
     public double getCurrentEquipLoad(){ return currentEquipLoad;}
+
+    // Roll type based on the current weigh
+    public RollType getRollType() {
+
+        double percent = (currentEquipLoad / maxEquipLoad) * 100;
+
+        if (percent < 30.0) {
+            return RollType.LIGHT;
+        } else if (percent < 70.0) {
+            return RollType.MEDIUM;
+        } else if (percent < 100.0) {
+            return RollType.HEAVY;
+        } else {
+            return RollType.OVERLOADED;
+        }
+    }
 
 
     // Validação
