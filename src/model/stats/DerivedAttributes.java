@@ -1,5 +1,8 @@
-package model.status;
+package model.stats;
 
+import engine.scaling.EnduranceScaling;
+import engine.scaling.MindScaling;
+import engine.scaling.VigorScaling;
 import model.enums.RollType;
 
 public class DerivedAttributes {
@@ -42,14 +45,14 @@ public class DerivedAttributes {
     }
 
     // Runes
-
+    // todo Change all runes to PlayerData
     private int currentRunes;
 
-    public void setCurrentRunes(int currentRunes){ // Max runes that player can hold is 999,999,999
+    public void setRunes(int currentRunes){ // Max runes that player can hold is 999,999,999
         int maxRunes = 999_999_999;
         this.currentRunes = validateCurrent(currentRunes, maxRunes); }
 
-    public int getCurrentRunes(){ return currentRunes; }
+    public int getRunes(){ return currentRunes; }
 
     // Equip Load
 
@@ -103,5 +106,31 @@ public class DerivedAttributes {
             return max;
         }
         return current;
+    }
+
+    // Update Values
+
+    public static void updateDerivedStats(Attributes player, DerivedAttributes stats) {
+
+        int oldMaxHp = stats.getMaxHp();
+        int oldMaxFp = stats.getMaxFp();
+
+        int newMaxHp = VigorScaling.getHP(player.getVigor());
+        int newMaxFp = MindScaling.getFP(player.getMind());
+
+        stats.setMaxHp(newMaxHp);
+        stats.setMaxFp(newMaxFp);
+
+        stats.setCurrentHp(
+                stats.getCurrentHp() + (newMaxHp - oldMaxHp)
+        );
+
+        stats.setCurrentFp(
+                stats.getCurrentFp() + (newMaxFp - oldMaxFp)
+        );
+
+        stats.setMaxEquipLoad(
+                EnduranceScaling.getEquipLoad(player.getEndurance())
+        );
     }
 }

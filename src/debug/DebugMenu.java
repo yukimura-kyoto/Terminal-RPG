@@ -1,7 +1,7 @@
 package debug;
 
-import model.status.Attributes;
-import model.status.DerivedAttributes;
+import model.stats.Attributes;
+import model.stats.DerivedAttributes;
 
 public class DebugMenu {
 
@@ -10,7 +10,7 @@ public class DebugMenu {
         System.out.println("========== PLAYER DEBUG ==========");
         System.out.println();
 
-        System.out.println("Nome: " + attributes.getName());
+        System.out.println("Class: " + attributes.getName());
         System.out.println("Level: "+ attributes.getLevel());
         System.out.println();
 
@@ -46,6 +46,17 @@ public class DebugMenu {
                 + "/"
                 + derived.getMaxEquipLoad()
                 + " (" + derived.getRollType().getName() + ")");
+
+        System.out.println("========== Level Up ==========");
+        System.out.println();
+        System.out.println("1 - Vigor");
+        System.out.println("2 - Mind");
+        System.out.println("3 - Endurance");
+        System.out.println("4 - Strength");
+        System.out.println("5 - Dexterity");
+        System.out.println("6 - Intelligence");
+        System.out.println("7 - Faith");
+        System.out.println("8 - Arcane");
 
         System.out.println();
         System.out.println("===============================");

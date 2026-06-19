@@ -1,4 +1,6 @@
-package model.status;
+package model.stats;
+
+import engine.scaling.LevelScaling;
 
 public class Attributes {
 
@@ -125,7 +127,7 @@ public class Attributes {
         this.name = name;
     }
 
-    // Level Calculation
+    // Level
     // Add up all the attributes and subtract 79, this generates the current level.
     public int getLevel() {
         return vigor +
@@ -136,6 +138,19 @@ public class Attributes {
                 intelligence +
                 faith +
                 arcane - 79;
+    }
+
+    public static boolean spendRunesToLevelUp(Attributes player, DerivedAttributes derived) {
+
+        int cost = LevelScaling.getRuneCost(player.getLevel());
+
+        if (derived.getRunes() >= cost) {
+            derived.setRunes(derived.getRunes() - cost);
+            return true;
+        }
+
+        System.out.println("Not enough runes!");
+        return false;
     }
 
     // Validação de Atributo
