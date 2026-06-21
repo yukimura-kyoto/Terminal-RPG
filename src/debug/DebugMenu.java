@@ -1,17 +1,34 @@
 package debug;
 
+import engine.scaling.LevelScaling;
+import model.entities.Player;
 import model.stats.Attributes;
 import model.stats.DerivedAttributes;
 
 public class DebugMenu {
 
-    public static void showStats(Attributes attributes, DerivedAttributes derived) {
+    public static void showStats(Player player) {
+
+        Attributes attributes = player.getAttributes();
+        DerivedAttributes derived = player.getStats();
 
         System.out.println("========== PLAYER DEBUG ==========");
         System.out.println();
 
-        System.out.println("Class: " + attributes.getName());
-        System.out.println("Level: "+ attributes.getLevel());
+        System.out.println("Class: " + player.getName());
+        System.out.println("Level: " + attributes.getLevel());
+
+        int nextLevelCost = LevelScaling.getRuneCost(attributes.getLevel());
+
+        System.out.println("Runes: " + derived.getRunes());
+        System.out.println("Next level cost: " + nextLevelCost + " runes");
+
+        if (derived.getRunes() < nextLevelCost) {
+            System.out.println("Missing: "
+                    + (nextLevelCost - derived.getRunes())
+                    + " runes");
+        }
+
         System.out.println();
 
         System.out.println("Vigor: " + attributes.getVigor());
@@ -22,7 +39,6 @@ public class DebugMenu {
         System.out.println("Intelligence: " + attributes.getIntelligence());
         System.out.println("Faith: " + attributes.getFaith());
         System.out.println("Arcane: " + attributes.getArcane());
-        // Depois adiciona Strength, Dexterity, etc.
 
         System.out.println();
 
@@ -36,19 +52,24 @@ public class DebugMenu {
                 + "/"
                 + derived.getMaxFp());
 
-//        System.out.println("Stamina: "
-//                + derived.getCurrentStamina()
-//                + "/"
-//                + derived.getMaxStamina());
-//
+        // todo Stamina
+        /*
+        System.out.println("Stamina: "
+                + derived.getCurrentStamina()
+                + "/"
+                + derived.getMaxStamina());
+        */
+
         System.out.println("Equip Load: "
                 + derived.getCurrentEquipLoad()
                 + "/"
                 + derived.getMaxEquipLoad()
                 + " (" + derived.getRollType().getName() + ")");
 
+        System.out.println();
         System.out.println("========== Level Up ==========");
         System.out.println();
+
         System.out.println("1 - Vigor");
         System.out.println("2 - Mind");
         System.out.println("3 - Endurance");
@@ -59,6 +80,7 @@ public class DebugMenu {
         System.out.println("8 - Arcane");
 
         System.out.println();
+        System.out.println("0 - Exit");
         System.out.println("===============================");
     }
 }

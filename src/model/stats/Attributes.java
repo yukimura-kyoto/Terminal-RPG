@@ -4,16 +4,6 @@ import engine.scaling.LevelScaling;
 
 public class Attributes {
 
-    private String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     // Health
     private int vigor;
 
@@ -123,9 +113,7 @@ public class Attributes {
         this.arcane = validateAttribute(arcane);
     }
 
-    public Attributes(String name) {
-        this.name = name;
-    }
+    public Attributes(){}
 
     // Level
     // Add up all the attributes and subtract 79, this generates the current level.

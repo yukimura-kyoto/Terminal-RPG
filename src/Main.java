@@ -1,14 +1,9 @@
 import debug.DebugMenu;
-import engine.scaling.EnduranceScaling;
-import engine.scaling.MindScaling;
-import engine.scaling.VigorScaling;
-import model.stats.Attributes;
-import model.stats.DerivedAttributes;
+import model.entities.Player;
 
 import java.util.Scanner;
 
 import static model.stats.Attributes.spendRunesToLevelUp;
-import static model.stats.DerivedAttributes.updateDerivedStats;
 
 public class Main {
 
@@ -16,88 +11,85 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        Attributes player = new Attributes("Vagabond");
-        DerivedAttributes stats = new DerivedAttributes();
+        Player player = new Player("Vagabond");
 
-        // Attributes from Vagabond Class to test it out
+        // Classe inicial Vagabond
+        player.getAttributes().setVigor(15);
+        player.getAttributes().setMind(10);
+        player.getAttributes().setEndurance(11);
+        player.getAttributes().setStrength(14);
+        player.getAttributes().setDexterity(13);
+        player.getAttributes().setIntelligence(9);
+        player.getAttributes().setFaith(9);
+        player.getAttributes().setArcane(7);
 
-        // Initial Level 9
+        // Atualiza HP, FP, Equip Load
+        player.updateStats();
 
-        player.setVigor(15);
-        player.setMind(10);
-        player.setEndurance(11);
-        player.setStrength(14);
-        player.setDexterity(13);
-        player.setIntelligence(9);
-        player.setFaith(9);
-        player.setArcane(7);
-
-        // Set Max
-
-        stats.setMaxHp(VigorScaling.getHP(player.getVigor()));
-        stats.setMaxFp(MindScaling.getFP(player.getMind()));
-        stats.setMaxEquipLoad(EnduranceScaling.getEquipLoad(player.getEndurance()));
-        stats.setRunes(999_999_999); // ahh debug
-
-        // cálculos de scaling aqui...
-        stats.setCurrentHp(stats.getMaxHp());
-        stats.setCurrentFp(stats.getMaxFp());
-        stats.setCurrentEquipLoad(500);
+        // Debug
+        player.getStats().setRunes(999_999_999);
 
         while (true) {
 
-            updateDerivedStats(player, stats);
-            DebugMenu.showStats(player, stats);
+            DebugMenu.showStats(player);
 
             int option = sc.nextInt();
 
             switch (option) {
 
                 case 1:
-                    if (spendRunesToLevelUp(player, stats)) {
-                        player.setVigor(player.getVigor() + 1);
+                    if (spendRunesToLevelUp(player.getAttributes(), player.getStats())) {
+                        player.getAttributes()
+                                .setVigor(player.getAttributes().getVigor() + 1);
                     }
                     break;
 
                 case 2:
-                    if (spendRunesToLevelUp(player, stats)) {
-                        player.setMind(player.getMind() + 1);
+                    if (spendRunesToLevelUp(player.getAttributes(), player.getStats())) {
+                        player.getAttributes()
+                                .setMind(player.getAttributes().getMind() + 1);
                     }
                     break;
 
                 case 3:
-                    if (spendRunesToLevelUp(player, stats)) {
-                        player.setEndurance(player.getEndurance() + 1);
+                    if (spendRunesToLevelUp(player.getAttributes(), player.getStats())) {
+                        player.getAttributes()
+                                .setEndurance(player.getAttributes().getEndurance() + 1);
                     }
                     break;
 
                 case 4:
-                    if (spendRunesToLevelUp(player, stats)) {
-                        player.setStrength(player.getStrength() + 1);
+                    if (spendRunesToLevelUp(player.getAttributes(), player.getStats())) {
+                        player.getAttributes()
+                                .setStrength(player.getAttributes().getStrength() + 1);
                     }
                     break;
 
                 case 5:
-                    if (spendRunesToLevelUp(player, stats)) {
-                        player.setDexterity(player.getDexterity() + 1);
+                    if (spendRunesToLevelUp(player.getAttributes(), player.getStats())) {
+                        player.getAttributes()
+                                .setDexterity(player.getAttributes().getDexterity() + 1);
                     }
                     break;
 
                 case 6:
-                    if (spendRunesToLevelUp(player, stats)) {
-                        player.setIntelligence(player.getIntelligence() + 1);
+                    if (spendRunesToLevelUp(player.getAttributes(), player.getStats())) {
+                        player.getAttributes()
+                                .setIntelligence(player.getAttributes().getIntelligence() + 1);
                     }
                     break;
 
                 case 7:
-                    if (spendRunesToLevelUp(player, stats)) {
-                        player.setFaith(player.getFaith() + 1);
+                    if (spendRunesToLevelUp(player.getAttributes(), player.getStats())) {
+                        player.getAttributes()
+                                .setFaith(player.getAttributes().getFaith() + 1);
                     }
                     break;
 
                 case 8:
-                    if (spendRunesToLevelUp(player, stats)) {
-                        player.setArcane(player.getArcane() + 1);
+                    if (spendRunesToLevelUp(player.getAttributes(), player.getStats())) {
+                        player.getAttributes()
+                                .setArcane(player.getAttributes().getArcane() + 1);
                     }
                     break;
 
@@ -107,8 +99,10 @@ public class Main {
 
                 default:
                     System.out.println("Invalid option!");
-                    break;
             }
+
+            // Recalcula depois de qualquer mudança
+            player.updateStats();
         }
     }
 }
