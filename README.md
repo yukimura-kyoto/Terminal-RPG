@@ -1,5 +1,7 @@
 # RPG - [Terminal RPG]
 
+# [Projeto esta sendo reescrito por completo na branch (refactor/game-architecture)]
+
 > [ Um RPG no Terminal feito 100% em Java para praticar algumas coisas]
 
 ---
