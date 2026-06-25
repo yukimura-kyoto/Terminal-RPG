@@ -1,51 +1,72 @@
-# RPG - [Terminal RPG]
+# RPG - [Terminal RPG] (Refactor)
 
-> [ Um RPG no Terminal feito 100% em Java para praticar algumas coisas]
+> An attempt to reverse engineer and recreate as many *Elden Ring* systems as possible in a turn-based Java RPG.
 
----
+## 🎯 Current Goal
 
-## 📖 Sobre
+Develop a playable adventure from character creation to the first boss encounter.
 
-[O Projeto Inicialmente estava sendo feito 100% a mão porém enquanto ele aumentava e ficava mais confuso tive que fazer um pouco de vibecode, principalmente nas partes de Array e partes mais complexas, ele contém Rituais/Magias de Ordem Paranormal como referencia de magia e eu fiz questão dele ser bem facil de adicionar ou remover algo.]
-
----
-
-## ⚔️ Old.Skills
-
-| ID | Nome | Tipo |
-|----|------|------|
-| 0 | Ataque Leve | Físico |
-| 1 | Ataque Duplo | Físico |
-| 2 | Descarnar | Ritual |
-| 3 | Rajada Caótica | Ritual |
-| 4 | Chama do Abismo | Ritual |
-| 5 | Lâmina Espectral | Ritual |
-| 6 | Ruptura Mental | Ritual |
-| 7 | Correntes do Outro Lado | Ritual |
-| 8 | Olhar do Vazio | Ritual |
-| 9 | Parasita Sombrio | Ritual (Lifesteal) |
+>This milestone is intended to establish the project's foundation and provide requirements for future gameplay systems, menus, progression mechanics, and world-building features.
 
 ---
 
-## 👹 NPCs
+## 📖 About
 
-| Nome | HP | Estilo |
-|------|----|--------|
-| Jaspian | 100 | NPC mais Basico, Menos vida, Menos ataques |
-| Raziel | 250 | NPC com mais vida, Mais ataque |
+This project is an attempt to reverse engineer and recreate many of the core systems found in *Elden Ring*, adapting them into a turn-based RPG written in Java.
+
+The project began as a terminal application and is being developed with a strong focus on understanding game architecture, system design, and object-oriented programming. While the long-term vision may evolve into a backend capable of supporting graphical frontends, the current focus is on building a solid and maintainable gameplay foundation.
+
+Development is being carried out independently as a learning project. AI is used as a mentor and reference tool, but all systems are analyzed, adapted, and implemented with the goal of understanding the underlying concepts rather than simply reproducing code.
+
+Rather than following a rigid roadmap, the project evolves through continuous analysis of *Elden Ring*'s mechanics, menus, progression systems, and gameplay loops. The current milestone is to develop a playable adventure leading up to a first boss encounter, providing a foundation for future systems and features.
+
 
 ---
 
-## 🚀 Como rodar
+## 🚀 How to test it out
 
-[ Clone o repositorio (de preferencia no IntelliJ) e coloque no Java Temurin 25]
+1. Clone the repository
+2. Open the project in IntelliJ IDEA
+3. Install Java Temurin 25 (or newer)
+4. Run `Main.java`
 
 ---
 
 ## 📝 To-do
 
-- [ ] [Eventos Aleatorios]
-- [ ] [Mais variedade de NPC]
-- [ ] [Sistema de Level]
+### Core Gameplay
+
+- [ ] Tutorial
+- [ ] First Scenario
+- [ ] First Boss
+- [ ] Level Up System
+
+### Characters
+
+- [ ] NPCs
+- [ ] Enemies
+- [ ] Bosses
+
+### Items & Equipment
+
+- [ ] Starter Items
+- [ ] Inventory
+- [ ] Weapons
+- [ ] Armours
+
+### Systems
+
+- [ ] Combat Engine
+- [ ] Event Engine
+- [ ] Save System
+- [ ] World Navigation
+- [ ] Dialogue System
+
+### Future Features
+
+- [ ] Crafting
+- [ ] Merchants
+- [ ] Quests
+- [ ] Magic System
 
 ---

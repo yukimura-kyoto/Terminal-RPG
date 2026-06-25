@@ -1,6 +1,7 @@
 package model.stats;
 
 import engine.scaling.LevelScaling;
+import model.enums.StartingClass;
 
 public class Attributes {
 
@@ -139,6 +140,20 @@ public class Attributes {
 
         System.out.println("Not enough runes!");
         return false;
+    }
+
+    // Attributes constructor
+
+    public Attributes(StartingClass startingClass) {
+
+        this.vigor = startingClass.getVigor();
+        this.mind = startingClass.getMind();
+        this.endurance = startingClass.getEndurance();
+        this.strength = startingClass.getStrength();
+        this.dexterity = startingClass.getDexterity();
+        this.intelligence = startingClass.getIntelligence();
+        this.faith = startingClass.getFaith();
+        this.arcane = startingClass.getArcane();
     }
 
     // Validação de Atributo

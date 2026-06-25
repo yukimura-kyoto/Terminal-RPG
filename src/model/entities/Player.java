@@ -1,5 +1,6 @@
 package model.entities;
 
+import model.enums.StartingClass;
 import model.stats.Attributes;
 import model.stats.DerivedAttributes;
 
@@ -8,27 +9,34 @@ public class Player {
     private String name;
 
     private Attributes attributes;
-    private DerivedAttributes stats;
+    private DerivedAttributes derivedAttributes;
 
-    public Player(String name) {
+    public Player(String name, StartingClass startingClass) {
+
         this.name = name;
-        this.attributes = new Attributes();
-        this.stats = new DerivedAttributes();
+
+        attributes = new Attributes();
+        derivedAttributes = new DerivedAttributes();
+
+        attributes.setVigor(startingClass.getVigor());
+        attributes.setMind(startingClass.getMind());
+        attributes.setEndurance(startingClass.getEndurance());
+        attributes.setStrength(startingClass.getStrength());
+        attributes.setDexterity(startingClass.getDexterity());
+        attributes.setIntelligence(startingClass.getIntelligence());
+        attributes.setFaith(startingClass.getFaith());
+        attributes.setArcane(startingClass.getArcane());
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Attributes getAttributes() {
         return attributes;
     }
 
-    public DerivedAttributes getStats() {
-        return stats;
-    }
-
-    public void updateStats() {
-        DerivedAttributes.updateDerivedStats(attributes, stats);
-    }
-
-    public String getName() {
-        return name;
+    public DerivedAttributes getDerivedAttributes() {
+        return derivedAttributes;
     }
 }

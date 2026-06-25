@@ -2,15 +2,43 @@ package debug;
 
 import engine.scaling.LevelScaling;
 import model.entities.Player;
+import model.enums.StartingClass;
 import model.stats.Attributes;
 import model.stats.DerivedAttributes;
+import util.ui.Input;
+import util.ui.Menu;
 
 public class DebugMenu {
+
+    public static void testPlayerCreation(){
+        Menu.chooseStartingClass();
+
+        int choice = Input.nextInt();
+        StartingClass selectedClass = StartingClass.values()[choice - 1];
+
+        String name = Input.nextString("Enter your name: ");
+
+        Player player = new Player(name, selectedClass);
+
+        Attributes attributes = player.getAttributes();
+        DerivedAttributes stats = player.getDerivedAttributes();
+
+        DerivedAttributes.updateDerivedStats(attributes, stats);
+
+        stats.setCurrentHp(stats.getMaxHp());
+        stats.setCurrentFp(stats.getMaxFp());
+        stats.setCurrentEquipLoad(0);
+
+        stats.setRunes(Input.nextInt("How many runes? "));
+
+        DebugMenu.showStats(player);
+    }
+
 
     public static void showStats(Player player) {
 
         Attributes attributes = player.getAttributes();
-        DerivedAttributes derived = player.getStats();
+        DerivedAttributes derived = player.getDerivedAttributes();
 
         System.out.println("========== PLAYER DEBUG ==========");
         System.out.println();
