@@ -18,6 +18,8 @@ public class Player {
         attributes = new Attributes();
         derivedAttributes = new DerivedAttributes();
 
+        DerivedAttributes.updateDerivedStats(attributes, derivedAttributes);
+
         attributes.setVigor(startingClass.getVigor());
         attributes.setMind(startingClass.getMind());
         attributes.setEndurance(startingClass.getEndurance());
