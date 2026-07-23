@@ -1,7 +1,7 @@
 package engine;
 
 import model.enums.Screen;
-import util.ui.MainMenu;
+import ui.MainMenu;
 
 public class GameEngine {
 

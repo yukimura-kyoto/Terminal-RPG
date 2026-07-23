@@ -5,8 +5,7 @@ import model.entities.Player;
 import model.enums.StartingClass;
 import model.stats.Attributes;
 import model.stats.DerivedAttributes;
-import util.ui.Input;
-import util.ui.Menu;
+import ui.Menu;
 
 public class DebugMenu {
 
