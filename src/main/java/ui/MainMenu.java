@@ -1,65 +1,81 @@
 package ui;
 
 import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.SimpleTheme;
 import com.googlecode.lanterna.gui2.*;
-import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-
-import java.io.IOException;
+import model.creation.CharacterCreationData;
+import ui.components.MenuStyle;
+import ui.components.SelectableActionListBox;
 
 public class MainMenu {
 
-    public static void show() throws IOException {
+    public static void show(MultiWindowTextGUI gui, BasicWindow window) {
 
-        Screen screen = new DefaultTerminalFactory().createScreen();
-        screen.startScreen();
+        // Tema do bagulho
+        gui.setTheme(new SimpleTheme(
+                TextColor.ANSI.BLACK,
+                TextColor.ANSI.WHITE
+        ));
 
-        MultiWindowTextGUI gui = new MultiWindowTextGUI(screen);
+        Panel root = new Panel();
+        root.setLayoutManager(new LinearLayout(Direction.VERTICAL));
 
-        BasicWindow window = new BasicWindow();
-
-        Panel panel = new Panel();
-        panel.setLayoutManager(new LinearLayout(Direction.VERTICAL));
-
+        // Titulo
         Label title = new Label(
-                " ██████╗ ██████╗  █████╗  █████╗ ███████╗  ██████╗ ██████╗  █████╗      ██╗███████╗ █████╗ ████████╗\n" +
-                        "██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██╔════╝  ██╔══██╗██╔══██╗██╔══██╗     ██║██╔════╝██╔══██╗╚══██╔══╝\n" +
-                        "██║  ██╗ ██████╔╝███████║██║  ╚═╝█████╗    ██████╔╝██████╔╝██║  ██║     ██║█████╗  ██║  ╚═╝   ██║   \n" +
-                        "██║  ╚██╗██╔══██╗██╔══██║██║  ██╗██╔══╝    ██╔═══╝ ██╔══██╗██║  ██║██╗  ██║██╔══╝  ██║  ██╗   ██║   \n" +
-                        "╚██████╔╝██║  ██║██║  ██║╚█████╔╝███████╗  ██║     ██║  ██║╚█████╔╝╚█████╔╝███████╗╚█████╔╝   ██║   \n" +
-                        " ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚════╝ ╚══════╝  ╚═╝     ╚═╝  ╚═╝ ╚════╝  ╚════╝ ╚══════╝ ╚════╝    ╚═╝   "
+                " ██████╗ ██████╗  █████╗  █████╗ ███████╗  ██████╗ ██████╗  █████╗      ██╗███████╗ █████╗ ████████╗\n" +
+                        "██╔════╝ ██╔══██╗██╔══██╗██╔══██╗██╔════╝  ██╔══██╗██╔══██╗██╔══██╗     ██║██╔════╝██╔══██╗╚══██╔══╝\n" +
+                        "██║  ██╗ ██████╔╝███████║██║  ╚═╝█████╗    ██████╔╝██████╔╝██║  ██║     ██║█████╗  ██║  ╚═╝   ██║   \n" +
+                        "██║  ╚██╗██╔══██╗██╔══██║██║  ██╗██╔══╝    ██╔═══╝ ██╔══██╗██║  ██║██╗  ██║██╔══╝  ██║  ██╗   ██║   \n" +
+                        "╚██████╔╝██║  ██║██║  ██║╚█████╔╝███████╗  ██║     ██║  ██║╚█████╔╝╚█████╔╝███████╗╚█████╔╝   ██║   \n" +
+                        " ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝ ╚════╝ ╚══════╝  ╚═╝     ╚═╝  ╚═╝ ╚════╝  ╚════╝ ╚══════╝ ╚════╝    ╚═╝   "
         );
 
-        panel.addComponent(title);
+        title.setLayoutData(
+                LinearLayout.createLayoutData(LinearLayout.Alignment.Center)
+        );
 
-        panel.addComponent(new EmptySpace(new TerminalSize(0,1)));
+        root.addComponent(title);
+        root.addComponent(new EmptySpace(new TerminalSize(0, 2)));
 
-        panel.addComponent(new Button("Continue", () -> {
+        SelectableActionListBox menu = new SelectableActionListBox();
+
+        // Aplica o tema
+        MenuStyle.apply(menu);
+
+        // Opcoes que tem no menu
+        menu.addItem("Continue", () -> {
             // TODO
-        }));
+        });
 
-        panel.addComponent(new Button("Load Game", () -> {
+        menu.addItem("Load Game", () -> {
             // TODO
-        }));
+        });
 
-        panel.addComponent(new Button("New Game", () -> {
+        menu.addItem("New Game", () -> {
+            // Cria uma Data nova para a criação do ‘player’
+            CharacterCreationData data = new CharacterCreationData();
+            // vai para o menu de começar a criar
+            SelectCharacterBaseMenu.show(gui, window, data);
+
+        });
+
+        menu.addItem("System", () -> {
             // TODO
-        }));
+        });
 
-        panel.addComponent(new Button("System", () -> {
+        menu.addItem("Information", () -> {
             // TODO
-        }));
+        });
 
-        panel.addComponent(new Button("Information", () -> {
-            // TODO
-        }));
+        menu.addItem("Quit Game", window::close);
 
-        panel.addComponent(new Button("Quit Game", window::close));
+        menu.setLayoutData(
+                LinearLayout.createLayoutData(LinearLayout.Alignment.Center)
+        );
 
-        window.setComponent(panel);
+        root.addComponent(menu);
 
-        gui.addWindowAndWait(window);
-
-        screen.stopScreen();
+        window.setComponent(root);
     }
 }
