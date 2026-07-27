@@ -1,33 +1,63 @@
 package model.entities;
 
+import model.creation.CharacterCreationData;
+import model.enums.KeepSake;
 import model.enums.StartingClass;
+import model.save.PlayerData;
 import model.stats.Attributes;
 import model.stats.DerivedAttributes;
 
 public class Player {
 
     private String name;
+    private int runes;
+
+    private int level;
 
     private Attributes attributes;
     private DerivedAttributes derivedAttributes;
 
-    public Player(String name, StartingClass startingClass) {
+    // Criação de personagem
+    private StartingClass startingClass;
+    private KeepSake keepsake;
 
-        this.name = name;
+    // Isso é usado na criação de personagem 67
+    public Player(CharacterCreationData data) {
 
-        attributes = new Attributes();
-        derivedAttributes = new DerivedAttributes();
+        this.name = data.getName();
+        this.runes = 0;
+        this.level = data.getStartingClass().getLevel();
+
+        this.attributes = new Attributes();
+        this.derivedAttributes = new DerivedAttributes();
+
+        this.startingClass = data.getStartingClass();
+        this.keepsake = data.getKeepsake();
+
+        this.attributes.setVigor(startingClass.getVigor());
+        this.attributes.setMind(startingClass.getMind());
+        this.attributes.setEndurance(startingClass.getEndurance());
+        this.attributes.setStrength(startingClass.getStrength());
+        this.attributes.setDexterity(startingClass.getDexterity());
+        this.attributes.setIntelligence(startingClass.getIntelligence());
+        this.attributes.setFaith(startingClass.getFaith());
+        this.attributes.setArcane(startingClass.getArcane());
 
         DerivedAttributes.updateDerivedStats(attributes, derivedAttributes);
+    }
 
-        attributes.setVigor(startingClass.getVigor());
-        attributes.setMind(startingClass.getMind());
-        attributes.setEndurance(startingClass.getEndurance());
-        attributes.setStrength(startingClass.getStrength());
-        attributes.setDexterity(startingClass.getDexterity());
-        attributes.setIntelligence(startingClass.getIntelligence());
-        attributes.setFaith(startingClass.getFaith());
-        attributes.setArcane(startingClass.getArcane());
+    // Isso tu usa pra carregar o player com a data atual
+    public Player(PlayerData data) {
+
+        this.name = data.getName();
+        this.runes = data.getRunes();
+        this.level = data.getLevel();
+
+        this.startingClass = data.getStartingClass();
+        this.keepsake = data.getKeepsake();
+
+        this.attributes = data.getAttributes();
+        this.derivedAttributes = data.getDerivedAttributes();
     }
 
     public String getName() {
@@ -40,5 +70,42 @@ public class Player {
 
     public DerivedAttributes getDerivedAttributes() {
         return derivedAttributes;
+    }
+
+    public KeepSake getKeepsake() {
+        return keepsake;
+    }
+
+    public StartingClass getStartingClass() {
+        return startingClass;
+    }
+
+    public int getRunes() {
+        return runes;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    // nao tem como adicionar −67 milhoes de runas
+    public void addRunes(int amount) {
+        if (amount <= 0) {
+            return;
+        }
+        runes += amount;
+    }
+
+    public boolean spendRunes(int amount) {
+        if (runes < amount) {
+            return false;
+        }
+        runes -= amount;
+        return true;
+    }
+
+    // Debug
+    public void setRunes(int runes) {
+        this.runes = runes;
     }
 }

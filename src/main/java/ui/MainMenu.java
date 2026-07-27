@@ -5,6 +5,8 @@ import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.SimpleTheme;
 import com.googlecode.lanterna.gui2.*;
 import model.creation.CharacterCreationData;
+import model.entities.Player;
+import model.save.PlayerRepository;
 import ui.components.MenuStyle;
 import ui.components.SelectableActionListBox;
 
@@ -49,7 +51,7 @@ public class MainMenu {
         });
 
         menu.addItem("Load Game", () -> {
-            // TODO
+            LoadGameMenu.show(gui,window);
         });
 
         menu.addItem("New Game", () -> {

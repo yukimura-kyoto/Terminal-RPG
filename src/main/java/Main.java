@@ -5,6 +5,8 @@ import com.googlecode.lanterna.gui2.BasicWindow;
 import com.googlecode.lanterna.gui2.MultiWindowTextGUI;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
+import model.entities.Player;
+import model.save.PlayerRepository;
 import ui.MainMenu;
 
 public class Main {

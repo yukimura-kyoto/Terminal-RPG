@@ -1,5 +1,6 @@
 package model.stats;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import engine.scaling.EnduranceScaling;
 import engine.scaling.MindScaling;
 import engine.scaling.VigorScaling;
@@ -72,6 +73,7 @@ public class DerivedAttributes {
     public double getCurrentEquipLoad(){ return currentEquipLoad;}
 
     // Roll type based on the current weigh
+    @JsonIgnore
     public RollType getRollType() {
 
         double percent = (currentEquipLoad / maxEquipLoad) * 100;
@@ -89,7 +91,6 @@ public class DerivedAttributes {
 
 
     // Validação
-
     public int validateCurrent(int current, int max) {
         if (current < 0) {
             return 0;
@@ -109,7 +110,6 @@ public class DerivedAttributes {
     }
 
     // Update Values
-
     public static void updateDerivedStats(Attributes player, DerivedAttributes stats) {
 
         int oldMaxHp = stats.getMaxHp();

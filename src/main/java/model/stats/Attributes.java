@@ -2,6 +2,7 @@ package model.stats;
 
 import engine.scaling.LevelScaling;
 import model.enums.StartingClass;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class Attributes {
 
@@ -118,6 +119,7 @@ public class Attributes {
 
     // Level
     // Add up all the attributes and subtract 79, this generates the current level.
+    @JsonIgnore
     public int getLevel() {
         return vigor +
                 mind +
