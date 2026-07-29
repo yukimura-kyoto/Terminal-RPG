@@ -8,18 +8,19 @@ import enums.StartingClass;
 import save.PlayerRepository;
 import ui.components.DataTextBox;
 import ui.components.MenuStyle;
+import world.areas.ChapelOfAnticipation;
 
 public class CharacterCreationMenu {
 
     public static void show(MultiWindowTextGUI gui, BasicWindow window, CharacterCreationData data) {
 
+        // Get the starting class
         StartingClass startingClass = data.getStartingClass();
 
         Panel root = new Panel();
         root.setLayoutManager(new LinearLayout(Direction.HORIZONTAL));
 
         // LEFT PANEL
-
         Panel left = new Panel();
         left.setLayoutManager(new LinearLayout(Direction.VERTICAL));
         Label title = new Label("Character Creation");
@@ -50,21 +51,12 @@ public class CharacterCreationMenu {
                 data.setName("Tarnished");
             }
 
-            // Salva o Personagem
+            // Create and save Player
             Player player = new Player(data);
             PlayerRepository.save(player);
 
-            // TODO:
-            // player.setKeepsake(data.getKeepsake());
-
-            System.out.println("========== PLAYER CREATED ==========");
-            System.out.println("Name: " + player.getName());
-            System.out.println("Class: " + data.getStartingClass().getName());
-            System.out.println("Keepsake: " + data.getKeepsake().getName());
-
-            // TODO:
-            // GameMenu.show(gui, window, player);
-
+            // Changes the Screen to the first one in game
+            ChapelOfAnticipation.show(gui, window, player);
         });
 
         left.addComponent(finish);
