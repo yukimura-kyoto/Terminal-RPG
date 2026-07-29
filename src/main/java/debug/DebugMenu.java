@@ -1,9 +1,9 @@
 package debug;
 
-import engine.scaling.LevelScaling;
-import model.entities.Player;
-import model.stats.Attributes;
-import model.stats.DerivedAttributes;
+import stats.scaling.LevelScaling;
+import player.Player;
+import stats.Attributes;
+import stats.DerivedAttributes;
 
 public class DebugMenu {
 
