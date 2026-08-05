@@ -38,11 +38,10 @@ public class CharacterCreationMenu {
 
         // KEEPSAKE
         left.addComponent(new Label("Keepsake"));
-        ActionListBox keepsakeMenu = new ActionListBox();
-        MenuStyle.apply(keepsakeMenu);
-        keepsakeMenu.addItem(data.getKeepsake().getName(), () -> {SelectKeepSakeMenu.show(gui, window, data);});
 
-        left.addComponent(keepsakeMenu);
+        Button keepsakeButton = new Button(data.getKeepsake().getName(), () -> SelectKeepSakeMenu.show(gui, window, data));
+
+        left.addComponent(keepsakeButton);
         left.addComponent(new EmptySpace(new TerminalSize(0, 2)));
 
         // FINISH

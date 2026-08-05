@@ -10,13 +10,13 @@ public enum KeepSake {
 
     CRIMSON_AMBER_MEDALLION(
             "Crimson Amber Medallion",
-            "A medallion inlaid with crimson amber. Slightly increases maximum HP.",
+            "A medallion inlaid with crimson amber.\nSlightly increases maximum HP.",
             "While equipped, increases maximum HP by 6%."
     ),
 
     LANDS_BETWEEN_RUNE(
             "Lands Between Rune",
-            "The gold of grace shining in the eyes of the people of the Lands Between.",
+            "The gold of grace shining in the eyes \nof the people of the Lands Between.",
             "Use to gain 3000 Runes."
     ),
 
@@ -28,7 +28,7 @@ public enum KeepSake {
 
     FANGED_IMP_ASHES(
             "Fanged Imp Ashes",
-            "The ashes of small, diminutive golems. Ashes are said to hold spirits within.",
+            "The ashes of small, diminutive golems. \nAshes are said to hold spirits within.",
             "Summons two Fanged Imps to fight by your side."
     ),
 
