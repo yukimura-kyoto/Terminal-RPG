@@ -18,6 +18,10 @@ public final class AreaManager {
 
         currentArea = area;
 
+        if (player != null) {
+            player.setCurrentArea(area.getId());
+        }
+
         area.show(gui, window, player);
     }
 

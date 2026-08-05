@@ -3,27 +3,25 @@ import com.googlecode.lanterna.gui2.BasicWindow;
 import com.googlecode.lanterna.gui2.MultiWindowTextGUI;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import player.Player;
 import ui.menus.main.MainMenu;
-import world.Area;
-import world.areas.ChapelOfAnticipation;
 
-public static void main(String[] args) throws Exception {
+public class Main {
 
-    DefaultTerminalFactory factory = new DefaultTerminalFactory();
-    factory.setInitialTerminalSize(new TerminalSize(104, 45));
+    public static void main(String[] args) throws Exception {
 
-    Screen screen = factory.createScreen();
-    screen.startScreen();
+        DefaultTerminalFactory factory = new DefaultTerminalFactory();
+        factory.setInitialTerminalSize(new TerminalSize(104, 45));
 
-    MultiWindowTextGUI gui = new MultiWindowTextGUI(screen);
-    BasicWindow window = new BasicWindow();
+        Screen screen = factory.createScreen();
+        screen.startScreen();
 
-    Player player = null; // ou um Player de teste
+        MultiWindowTextGUI gui = new MultiWindowTextGUI(screen);
+        BasicWindow window = new BasicWindow();
 
-    new ChapelOfAnticipation().show(gui, window, player);
+        MainMenu.show(gui, window);
 
-    gui.addWindowAndWait(window);
+        gui.addWindowAndWait(window);
 
-    screen.stopScreen();
+        screen.stopScreen();
+    }
 }

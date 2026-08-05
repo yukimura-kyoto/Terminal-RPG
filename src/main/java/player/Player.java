@@ -6,6 +6,7 @@ import enums.StartingClass;
 import save.PlayerData;
 import stats.Attributes;
 import stats.DerivedAttributes;
+import world.AreaId;
 
 public class Player {
 
@@ -16,6 +17,8 @@ public class Player {
 
     private Attributes attributes;
     private DerivedAttributes derivedAttributes;
+
+    private AreaId currentArea;
 
     // Criação de personagem
     private StartingClass startingClass;
@@ -58,6 +61,8 @@ public class Player {
 
         this.attributes = data.getAttributes();
         this.derivedAttributes = data.getDerivedAttributes();
+
+        this.currentArea = data.getCurrentArea();
     }
 
     public String getName() {
@@ -86,6 +91,14 @@ public class Player {
 
     public int getLevel() {
         return level;
+    }
+
+    public AreaId getCurrentArea() {
+        return currentArea;
+    }
+
+    public void setCurrentArea(AreaId currentArea) {
+        this.currentArea = currentArea;
     }
 
     // nao tem como adicionar −67 milhoes de runas

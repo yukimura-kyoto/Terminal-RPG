@@ -40,9 +40,8 @@ public class CharacterCreationMenu {
         left.addComponent(new Label("Keepsake"));
         ActionListBox keepsakeMenu = new ActionListBox();
         MenuStyle.apply(keepsakeMenu);
-        keepsakeMenu.addItem("[" + data.getKeepsake().getName() + "]", () -> {
-            SelectKeepSakeMenu.show(gui, window, data);
-        });
+        keepsakeMenu.addItem(data.getKeepsake().getName(), () -> {SelectKeepSakeMenu.show(gui, window, data);});
+
         left.addComponent(keepsakeMenu);
         left.addComponent(new EmptySpace(new TerminalSize(0, 2)));
 
@@ -52,17 +51,17 @@ public class CharacterCreationMenu {
                 data.setName("Tarnished");
             }
 
-            // Create and save Player
             Player player = new Player(data);
-            PlayerRepository.save(player);
 
-            // Changes the Screen to the first one in game
             AreaManager.enter(
                     new ChapelOfAnticipation(),
                     gui,
                     window,
                     player
             );
+
+            PlayerRepository.save(player);
+            // player sempre tem que ser salvo após trocar de areas, se não area pode retornar null
         });
 
         left.addComponent(finish);

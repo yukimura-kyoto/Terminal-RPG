@@ -18,6 +18,8 @@ public final class PlayerMapper {
         data.setAttributes(player.getAttributes());
         data.setDerivedAttributes(player.getDerivedAttributes());
 
+        data.setCurrentArea(player.getCurrentArea());
+
         return data;
     }
 

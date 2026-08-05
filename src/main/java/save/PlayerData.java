@@ -4,6 +4,7 @@ import enums.KeepSake;
 import enums.StartingClass;
 import stats.Attributes;
 import stats.DerivedAttributes;
+import world.AreaId;
 
 public class PlayerData {
 
@@ -16,6 +17,8 @@ public class PlayerData {
 
     private Attributes attributes;
     private DerivedAttributes derivedAttributes;
+
+    private AreaId currentArea;
 
     public PlayerData() {
     }
@@ -74,5 +77,13 @@ public class PlayerData {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public AreaId getCurrentArea() {
+        return currentArea;
+    }
+
+    public void setCurrentArea(AreaId currentArea) {
+        this.currentArea = currentArea;
     }
 }
