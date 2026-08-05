@@ -3,6 +3,7 @@ package world;
 import com.googlecode.lanterna.gui2.BasicWindow;
 import com.googlecode.lanterna.gui2.MultiWindowTextGUI;
 import player.Player;
+import ui.game.AreaScreen;
 
 public final class AreaManager {
 
@@ -14,15 +15,17 @@ public final class AreaManager {
             Area area,
             MultiWindowTextGUI gui,
             BasicWindow window,
-            Player player) {
+            Player player
+    ){
 
         currentArea = area;
 
-        if (player != null) {
-            player.setCurrentArea(area.getId());
-        }
-
-        area.show(gui, window, player);
+        AreaScreen.show(
+                gui,
+                window,
+                area,
+                player
+        );
     }
 
     public static Area getCurrentArea() {

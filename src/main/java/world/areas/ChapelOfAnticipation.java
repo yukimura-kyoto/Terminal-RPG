@@ -1,32 +1,37 @@
 package world.areas;
 
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.gui2.*;
+import com.googlecode.lanterna.gui2.BasicWindow;
+import com.googlecode.lanterna.gui2.MultiWindowTextGUI;
 import player.Player;
 import world.Area;
+import world.AreaAction;
 import world.AreaId;
+import world.AreaManager;
+
+import java.util.List;
 
 public class ChapelOfAnticipation extends Area {
 
+
     public ChapelOfAnticipation() {
-        super(
-                AreaId.CHAPEL_OF_ANTICIPATION,
-                "Chapel of Anticipation",
-                "The salty wind sweeps through the ruined chapel..."
-        );
+
+        super(AreaId.CHAPEL_OF_ANTICIPATION, "Chapel of Anticipation", """
+                You awaken inside a ruined chapel.
+                
+                The salty wind enters through broken walls.
+                A massive wooden door stands before you.
+                """);
+
     }
 
+
     @Override
-    public void show(MultiWindowTextGUI gui,
-                     BasicWindow window,
-                     Player player) {
+    public List<AreaAction> getActions(MultiWindowTextGUI gui, BasicWindow window, Player player) {
 
-        Panel root = new Panel();
+        return List.of(
 
-        root.addComponent(new Label(getName()));
-        root.addComponent(new EmptySpace(new TerminalSize(0,1)));
-        root.addComponent(new Label(getDescription()));
+                new AreaAction("Open the door", () -> AreaManager.enter(new ChapelOutside(), gui, window, player))
 
-        window.setComponent(root);
+        );
     }
 }
