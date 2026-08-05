@@ -3,7 +3,10 @@ import com.googlecode.lanterna.gui2.BasicWindow;
 import com.googlecode.lanterna.gui2.MultiWindowTextGUI;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
+import player.Player;
 import ui.menus.main.MainMenu;
+import world.Area;
+import world.areas.ChapelOfAnticipation;
 
 public static void main(String[] args) throws Exception {
 
@@ -16,7 +19,9 @@ public static void main(String[] args) throws Exception {
     MultiWindowTextGUI gui = new MultiWindowTextGUI(screen);
     BasicWindow window = new BasicWindow();
 
-    MainMenu.show(gui, window);
+    Player player = null; // ou um Player de teste
+
+    new ChapelOfAnticipation().show(gui, window, player);
 
     gui.addWindowAndWait(window);
 

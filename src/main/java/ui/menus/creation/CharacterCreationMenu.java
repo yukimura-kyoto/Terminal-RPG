@@ -8,6 +8,7 @@ import enums.StartingClass;
 import save.PlayerRepository;
 import ui.components.DataTextBox;
 import ui.components.MenuStyle;
+import world.AreaManager;
 import world.areas.ChapelOfAnticipation;
 
 public class CharacterCreationMenu {
@@ -56,7 +57,12 @@ public class CharacterCreationMenu {
             PlayerRepository.save(player);
 
             // Changes the Screen to the first one in game
-            ChapelOfAnticipation.show(gui, window, player);
+            AreaManager.enter(
+                    new ChapelOfAnticipation(),
+                    gui,
+                    window,
+                    player
+            );
         });
 
         left.addComponent(finish);

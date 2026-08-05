@@ -1,16 +1,27 @@
 package world;
 
-public class AreaManager {
+import com.googlecode.lanterna.gui2.BasicWindow;
+import com.googlecode.lanterna.gui2.MultiWindowTextGUI;
+import player.Player;
 
-    private Area currentArea;
+public final class AreaManager {
 
-    public void enter(Area area) {
+    private static Area currentArea;
+
+    private AreaManager(){}
+
+    public static void enter(
+            Area area,
+            MultiWindowTextGUI gui,
+            BasicWindow window,
+            Player player) {
 
         currentArea = area;
 
-        System.out.println(area.getName());
-        System.out.println();
-        System.out.println(area.getDescription());
+        area.show(gui, window, player);
+    }
 
+    public static Area getCurrentArea() {
+        return currentArea;
     }
 }

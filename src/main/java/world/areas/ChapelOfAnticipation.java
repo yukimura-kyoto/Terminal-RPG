@@ -3,27 +3,30 @@ package world.areas;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.gui2.*;
 import player.Player;
-import ui.printer.AreaPrinter;
 import world.Area;
+import world.AreaId;
 
-public class ChapelOfAnticipation {
+public class ChapelOfAnticipation extends Area {
 
-    public static Area SPAWN = new Area(
-            "Spawn Room",
-            "You awaken inside a ruined stone chapel..."
-    );
+    public ChapelOfAnticipation() {
+        super(
+                AreaId.CHAPEL_OF_ANTICIPATION,
+                "Chapel of Anticipation",
+                "The salty wind sweeps through the ruined chapel..."
+        );
+    }
 
-    public static void show(MultiWindowTextGUI gui, BasicWindow window, Player player) {
+    @Override
+    public void show(MultiWindowTextGUI gui,
+                     BasicWindow window,
+                     Player player) {
 
         Panel root = new Panel();
 
-        root.addComponent(new Label("Chapel of Anticipation"));
+        root.addComponent(new Label(getName()));
         root.addComponent(new EmptySpace(new TerminalSize(0,1)));
-        root.addComponent(new Label(
-                "The salty wind sweeps through the ruined chapel."
-        ));
+        root.addComponent(new Label(getDescription()));
 
         window.setComponent(root);
     }
-
 }
